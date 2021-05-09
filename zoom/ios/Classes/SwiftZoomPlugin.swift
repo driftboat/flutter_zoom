@@ -1,19 +1,21 @@
 import Flutter
 import UIKit
+import MobileRTC
 
-public class SwiftZoomPlugin: NSObject, FlutterPlugin , MobileRTCMeetingServiceDelegate{
+public class SwiftZoomPlugin: NSObject, FlutterPlugin,FlutterStreamHandler , MobileRTCMeetingServiceDelegate{
   var authenticationDelegate: AuthenticationDelegate
-  var eventSink: FlutterEventSink?
+  var eventSink: FlutterEventSink? 
   public static func register(with registrar: FlutterPluginRegistrar) {
-    let channel = FlutterMethodChannel(name: "plugins.webcare/zoom_channel", binaryMessenger: registrar.messenger())
+    let messenger = registrar.messenger()
+    let channel = FlutterMethodChannel(name: "plugins.webcare/zoom_channel", binaryMessenger: messenger)
     let instance = SwiftZoomPlugin() 
     registrar.addMethodCallDelegate(instance, channel: channel)
 
-    let eventChannel = FlutterEventChannel(name: "plugins.webcare/zoom_event_stream", binaryMessenger: messenger!)
+    let eventChannel = FlutterEventChannel(name: "plugins.webcare/zoom_event_stream", binaryMessenger: messenger)
     eventChannel.setStreamHandler(instance)
   }
 
-  init(){
+  override init(){
     authenticationDelegate = AuthenticationDelegate()
   }
 

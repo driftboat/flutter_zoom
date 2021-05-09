@@ -96,8 +96,8 @@ class _JoinWidgetState extends State<JoinWidget> {
     );
     var meetingOptions = new ZoomMeetingOptions(
         userId: 'example',
-        meetingId: "your meeting id",
-        meetingPassword: "your meeting password",
+        meetingId: meetingIdController.text,
+        meetingPassword: meetingPasswordController.text,
         disableDialIn: "true",
         disableDrive: "true",
         disableInvite: "true",
