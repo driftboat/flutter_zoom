@@ -2,7 +2,7 @@ name: zoom_platform_interface
 description: A new flutter plugin project.
 version: 0.0.1
 author:
-homepage:
+homepage: https://github.com/driftboat/flutter_zoom/tree/main/zoom_platform_interface
 
 environment:
   sdk: ">=2.7.0 <3.0.0"

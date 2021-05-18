@@ -2,7 +2,7 @@ name: zoom_web
 description: A new flutter plugin project.
 version: 0.0.1
 author:
-homepage:
+homepage: https://github.com/driftboat/flutter_zoom/tree/main/zoom_web
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
