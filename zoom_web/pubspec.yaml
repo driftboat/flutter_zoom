@@ -3,6 +3,7 @@ description: A new flutter plugin project.
 version: 0.0.1
 author:
 homepage: https://github.com/driftboat/flutter_zoom/tree/main/zoom_web
+publish_to: none
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
@@ -14,7 +15,11 @@ dependencies:
   flutter_web_plugins:
     sdk: flutter
   zoom_platform_interface:
-    path: ../zoom_platform_interface/
+    git:
+      url: git@github.com:driftboat/flutter_zoom.git
+      ref: dev
+      path: zoom_platform_interface
+
   js: ^0.6.3
   
 dev_dependencies:
