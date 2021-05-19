@@ -58,7 +58,9 @@ class ZoomWeb extends ZoomPlatform {
   }
 
   @override
-  Future<bool> startMeeting(ZoomMeetingOptions options) async {}
+  Future<bool> startMeeting(ZoomMeetingOptions options) async {
+    return false;
+  }
 
   @override
   Future<bool> joinMeeting(ZoomMeetingOptions options) async {
