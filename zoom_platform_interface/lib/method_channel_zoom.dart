@@ -25,9 +25,10 @@ class MethodChannelZoom extends ZoomPlatform {
   Future<bool> startMeeting(ZoomMeetingOptions options) async {
     assert(options != null);
     assert(options.zoomAccessToken != null);
+    assert(options.displayName != null);
     var optionMap = new Map<String, String>();
     optionMap.putIfAbsent("userId", () => options.userId);
-    optionMap.putIfAbsent("displayName", () => options.displayName);
+    optionMap.putIfAbsent("displayName", () => options.displayName!);
     optionMap.putIfAbsent("meetingId", () => options.meetingId);
     optionMap.putIfAbsent("meetingPassword", () => options.meetingPassword);
     // optionMap.putIfAbsent("zoomToken", () => options.zoomToken);

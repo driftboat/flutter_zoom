@@ -7,7 +7,7 @@ class ZoomOptions {
 
 class ZoomMeetingOptions {
   String userId;
-  String displayName;
+  String? displayName;
   String meetingId;
   String meetingPassword;
   String? zoomToken;
@@ -21,9 +21,9 @@ class ZoomMeetingOptions {
 
   ZoomMeetingOptions(
       {required this.userId,
-      required this.displayName,
       required this.meetingId,
       required this.meetingPassword,
+      this.displayName,
       this.zoomToken,
       this.zoomAccessToken,
       required this.disableDialIn,
