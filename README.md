@@ -1,6 +1,7 @@
 # flutter_zoom
 
 # example
+- git lfs install --skip-smudge 
 - git clone 
 - git lfs pull
 - Create SDK App JWT Token
