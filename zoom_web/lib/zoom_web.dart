@@ -3,8 +3,8 @@ import 'dart:js';
 
 import 'package:zoom_platform_interface/zoom_platform_interface.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
+import 'package:zoom_web/stringify_js.dart';
 import 'package:zoom_web/zoom_js.dart';
-
 import 'js_interop.dart';
 export 'package:zoom_platform_interface/zoom_platform_interface.dart'
     show ZoomOptions, ZoomMeetingOptions;
@@ -32,6 +32,7 @@ export 'package:zoom_platform_interface/zoom_platform_interface.dart'
 // }
 
 class ZoomWeb extends ZoomPlatform {
+  StreamController<dynamic>? streamController;
   static void registerWith(Registrar registrar) {
     ZoomPlatform.instance = ZoomWeb();
   }
@@ -87,11 +88,37 @@ class ZoomWeb extends ZoomPlatform {
 
   @override
   Future<List> meetingStatus(String meetingId) async {
-    throw UnimplementedError('meetingStatus() has not been implemented.');
+    return ["a", "b"];
   }
 
   @override
   Stream<dynamic> onMeetingStatus() {
-    throw UnimplementedError('onMeetingStatus() has not been implemented.');
+    final Completer<bool> completer = Completer();
+    streamController?.close();
+    streamController = StreamController<dynamic>();
+    ZoomMtg.inMeetingServiceListener('onMeetingStatus', allowInterop((status) {
+      //print(stringify(MeetingStatus status));
+      var r = List<String>.filled(2, "");
+      // 1(connecting), 2(connected), 3(disconnected), 4(reconnecting)
+      switch (status.meetingStatus) {
+        case 1:
+          r[0] = "MEETING_STATUS_CONNECTING";
+          break;
+        case 2:
+          r[0] = "MEETING_STATUS_INMEETING";
+          break;
+        case 3:
+          r[0] = "MEETING_STATUS_DISCONNECTING";
+          break;
+        case 4:
+          r[0] = "MEETING_STATUS_INMEETING";
+          break;
+        default:
+          r[0] = status.meetingStatus.toString();
+          break;
+      }
+      streamController!.add(r);
+    }));
+    return streamController!.stream;
   }
 }
