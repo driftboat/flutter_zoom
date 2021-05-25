@@ -66,16 +66,16 @@ class ZoomWeb extends ZoomPlatform {
   Future<bool> joinMeeting(ZoomMeetingOptions options) async {
     final Completer<bool> completer = Completer();
     final signature = ZoomMtg.generateSignature(SignatureParams(
-        meetingNumber: 92133699727,
-        apiKey: "3T3vg3hjThKTgHVuCbiXJA",
-        apiSecret: "RcDiMKwNORj0R2RfHWRZBmxYznJRMEsHoSIg",
+        meetingNumber: options.meetingId,
+        apiKey: "ApiKey",
+        apiSecret: "ApiSecret",
         role: 0));
     ZoomMtg.join(JoinParams(
-        meetingNumber: 92133699727,
+        meetingNumber: options.meetingId,
         userName: "example",
         signature: signature,
-        apiKey: "3T3vg3hjThKTgHVuCbiXJA",
-        passWord: "111",
+        apiKey: "ApiKey",
+        passWord: options.meetingPassword,
         success: allowInterop((var res) {
           completer.complete(true);
         }),
