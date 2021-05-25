@@ -17,8 +17,9 @@ class MethodChannelZoom extends ZoomPlatform {
     // optionMap.putIfAbsent("appSecret", () => options.appSecret);
     optionMap.putIfAbsent("jwtToken", () => options.jwtToken);
     optionMap.putIfAbsent("domain", () => options.domain);
-
-    return channel.invokeMethod('init', optionMap) as Future<List>;
+    return channel
+        .invokeMethod<List>('init', optionMap)
+        .then<List>((List? value) => value ?? List.empty());
   }
 
   @override
@@ -40,7 +41,9 @@ class MethodChannelZoom extends ZoomPlatform {
     optionMap.putIfAbsent("noDisconnectAudio", () => options.noDisconnectAudio);
     optionMap.putIfAbsent("noAudio", () => options.noAudio);
 
-    return channel.invokeMethod('start', optionMap) as Future<bool>;
+    return channel
+        .invokeMethod<bool>('start', optionMap)
+        .then<bool>((bool? value) => value ?? false);
   }
 
   @override
@@ -57,7 +60,9 @@ class MethodChannelZoom extends ZoomPlatform {
     optionMap.putIfAbsent("noDisconnectAudio", () => options.noDisconnectAudio);
     optionMap.putIfAbsent("noAudio", () => options.noAudio);
 
-    return channel.invokeMethod('join', optionMap) as Future<bool>;
+    return channel
+        .invokeMethod<bool>('join', optionMap)
+        .then<bool>((bool? value) => value ?? false);
   }
 
   @override
@@ -67,7 +72,9 @@ class MethodChannelZoom extends ZoomPlatform {
     var optionMap = new Map<String, String>();
     optionMap.putIfAbsent("meetingId", () => meetingId);
 
-    return channel.invokeMethod('meeting_status', optionMap) as Future<List>;
+    return channel
+        .invokeMethod<List>('meeting_status', optionMap)
+        .then<List>((List? value) => value ?? List.empty());
   }
 
   @override
