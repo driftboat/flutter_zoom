@@ -1,5 +1,24 @@
 # flutter_zoom
 
+
+## Zoom SDK Versions
+
+Android: https://github.com/zoom/zoom-sdk-android/releases/tag/v5.2.42043.1112
+ 
+iOS: https://github.com/zoom/zoom-sdk-ios/releases/tag/v5.2.42037.1112
+
+## Installation
+
+```yaml
+  zoom:
+      git:
+        url: git://github.com/decodedhealth/flutter_zoom_plugin.git
+        ref: dev
+```
+- git lfs install --skip-smudge 
+- flutter pub get
+- flutter pub run zoom:git_lfs_pull 
+
 # example
 - git lfs install --skip-smudge 
 - git clone 
@@ -33,5 +52,5 @@
     ```
 -  replace "your jwtToken" in "zoom/example/lib/join_screen.dart"
 
-# Reference
+# reference
 https://github.com/decodedhealth/flutter_zoom_plugin
