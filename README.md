@@ -11,9 +11,10 @@ iOS: https://github.com/zoom/zoom-sdk-ios/releases/tag/v5.2.42037.1112
 
 ```yaml
   zoom:
-      git:
-        url: git://github.com/decodedhealth/flutter_zoom_plugin.git
-        ref: dev
+    git:
+      url: git@github.com:driftboat/flutter_zoom.git
+      ref: dev
+      path: zoom
 ```
 - git lfs install --skip-smudge 
 - flutter pub get
