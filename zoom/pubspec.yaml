@@ -15,13 +15,13 @@ dependencies:
   zoom_platform_interface:
     git:
       url: git@github.com:driftboat/flutter_zoom.git
-      ref: dev
+      ref: main
       path: zoom_platform_interface
 
   zoom_web:
     git:
       url: git@github.com:driftboat/flutter_zoom.git
-      ref: dev
+      ref: main
       path: zoom_web  
 
 dev_dependencies:
