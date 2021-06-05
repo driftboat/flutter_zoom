@@ -17,7 +17,7 @@ dependencies:
   zoom_platform_interface:
     git:
       url: git@github.com:driftboat/flutter_zoom.git
-      ref: dev
+      ref: main
       path: zoom_platform_interface
 
   js: ^0.6.3
