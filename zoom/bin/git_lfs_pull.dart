@@ -17,8 +17,12 @@ void main(List<String> args) async {
       cacheZoomDirPath = f.path;
     }
   });
-  await shell.run('''
-  cd  $cacheZoomDirPath  &&  git lfs pull
-  cd  $rootDirPath  &&  git lfs pull
-  ''');
+  Directory.current = cacheZoomDirPath;
+  await shell.run("git lfs pull");
+  Directory.current = rootDirPath;
+  await shell.run("git lfs pull");
+  // await shell.run('''
+  // cd  $cacheZoomDirPath  &&  git lfs pull
+  // cd  $rootDirPath  &&  git lfs pull
+  // ''');
 }
