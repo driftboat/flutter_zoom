@@ -13,7 +13,7 @@ iOS: https://github.com/zoom/zoom-sdk-ios/releases/tag/v5.2.42037.1112
   zoom:
     git:
       url: git@github.com:driftboat/flutter_zoom.git
-      ref: dev
+      ref: main
       path: zoom
 ```
 - git lfs install --skip-smudge 
