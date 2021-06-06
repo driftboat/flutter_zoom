@@ -18,7 +18,7 @@ void main(List<String> args) async {
     }
   });
   Directory.current = cacheZoomDirPath;
-  await shell.run("git lfs pull");
+  await shell.run("git lfs install --local --skip-smudge && git lfs pull");
   Directory.current = rootDirPath;
   await shell.run("git lfs pull");
   // await shell.run('''
