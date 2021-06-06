@@ -11,14 +11,13 @@ dependencies:
   flutter:
     sdk: flutter
   zoom_platform_interface: ^1.0.0
-
   zoom_web: ^1.0.0  
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  archive: ^3.1.2
   
-  process_run: ^0.12.1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
