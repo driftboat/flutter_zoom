@@ -1,5 +1,5 @@
 # Flutter Zoom
-
+A Flutter plugin for the Zoom Client SDK.
 
 ## Zoom SDK Versions
 
