@@ -1,2 +1,0 @@
-*.aar filter=lfs diff=lfs merge=lfs -text
-zoom/ios/MobileRTC.framework/MobileRTC filter=lfs diff=lfs merge=lfs -text
