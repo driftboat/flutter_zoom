@@ -16,13 +16,13 @@ iOS: https://github.com/zoom/zoom-sdk-ios/releases/tag/v5.2.42037.1112
       ref: main
       path: zoom
 ```
-- git lfs install --skip-smudge 
+
 - flutter pub get
 - flutter pub run zoom:git_lfs_pull 
 
 # example
-- git lfs install --skip-smudge 
 - git clone 
+- git lfs install --local --skip-smudge 
 - git lfs pull
 - Create SDK App JWT Token
   - https://marketplace.zoom.us/docs/sdk/native-sdks/android/mastering-zoom-sdk/sdk-initialization => Composing JWT for SDK Initialization
