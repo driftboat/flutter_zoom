@@ -25,7 +25,11 @@ iOS: https://github.com/zoom/zoom-sdk-ios/releases/tag/v5.2.42037.1112
 ## Installation
 
 ```yaml
-  zoom: ^1.0.0
+  zoom:
+    git:
+      url: git@github.com:driftboat/flutter_zoom.git
+      ref: main
+      path: zoom
 ```
 
 ### iOS
