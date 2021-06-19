@@ -2,6 +2,13 @@
 
 Demonstrates how to use the zoom_web plugin.
 
+To run the example, you should change your APIKey&APISecret in the join_screen.dart  
+
+```dart
+const jwtAPIKey = "ApiKey";
+const jwtAPISecret = "ApiSecret";
+```
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.

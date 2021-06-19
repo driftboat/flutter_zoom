@@ -1,9 +1,15 @@
 import 'dart:async';
-import 'dart:html' hide Platform; 
+import 'dart:convert';
+import 'dart:html' hide Platform;
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:zoom_web/zoom_web.dart'; 
+import 'package:zoom_web/zoom_web.dart';
+import 'package:crypto/crypto.dart';
+//TODO change with your ApiKey and ApiSecret ,You can generate them according to this guide:
+//https://marketplace.zoom.us/docs/guides/build/jwt-app
+const jwtAPIKey = "ApiKey";
+const jwtAPISecret = "ApiSecret";
 
 class JoinWidget extends StatefulWidget {
   @override
@@ -94,14 +100,32 @@ class _JoinWidgetState extends State<JoinWidget> {
     return status == "MEETING_STATUS_ENDED";
   }
 
+  String generateSignature(
+      String apiKey, String apiSecret, String meetingNumber, int role) {
+    // Prevent time sync issue between client signature generation and zoom
+    final timestamp = DateTime.now().millisecondsSinceEpoch - 30000;
+    var str = '${apiKey}${meetingNumber}${timestamp}${role}';
+    var bytes = utf8.encode(str);
+    final msg = base64.encode(bytes);
+
+    final key = utf8.encode(apiSecret);
+    final hmacSha256 = Hmac(sha256, key); // HMAC-SHA256
+    final digest = hmacSha256.convert(utf8.encode(msg));
+    final hash = base64.encode(digest.bytes);
+    
+    str = '${apiKey}.${meetingNumber}.${timestamp}.${role}.${hash}';
+    bytes = utf8.encode(str);
+    final signature = base64.encode(bytes);
+    return signature.replaceAll(new RegExp("="), "");
+  }
+
   joinMeeting(BuildContext context) {
     ZoomOptions zoomOptions = new ZoomOptions(
       domain: "zoom.us",
       //https://marketplace.zoom.us/docs/sdk/native-sdks/auth
       //https://jwt.io/
       //--todo from server
-      jwtToken:
-          "your jwtToken",
+      jwtToken: "your jwtToken",
     );
     var meetingOptions = new ZoomMeetingOptions(
         userId: 'example',
@@ -114,6 +138,7 @@ class _JoinWidgetState extends State<JoinWidget> {
         noAudio: "false",
         noDisconnectAudio: "false");
     var zoom = ZoomWeb();
+
     zoom.initZoom(zoomOptions).then((results) {
       if (results[0] == 0) {
         // zoom.onMeetingStatus().listen((status) {
@@ -122,9 +147,14 @@ class _JoinWidgetState extends State<JoinWidget> {
         //     timer?.cancel();
         //   }
         // });
-        
-    var zr = window.document.getElementById("zmmtg-root");
-    querySelector('body').append(zr);
+
+        var zr = window.document.getElementById("zmmtg-root");
+        querySelector('body').append(zr);
+        //The signature should be generated on your server
+        final signature = generateSignature(
+            jwtAPIKey, jwtAPISecret, meetingIdController.text, 0);
+        meetingOptions.jwtAPIKey = jwtAPIKey;
+        meetingOptions.jwtSignature = signature;
         zoom.joinMeeting(meetingOptions).then((joinMeetingResult) {
           // timer = Timer.periodic(new Duration(seconds: 2), (timer) {
           //   zoom.meetingStatus(meetingOptions.meetingId).then((status) {
