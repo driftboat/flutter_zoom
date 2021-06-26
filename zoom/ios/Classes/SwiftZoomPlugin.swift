@@ -1,8 +1,30 @@
 import Flutter
 import UIKit
 import MobileRTC
-
-public class SwiftZoomPlugin: NSObject, FlutterPlugin,FlutterStreamHandler , MobileRTCMeetingServiceDelegate{
+import zoom_customui
+public class SwiftZoomPlugin: NSObject, FlutterPlugin,FlutterStreamHandler , MobileRTCMeetingServiceDelegate, MobileRTCCustomizedUIMeetingDelegate{
+    var  zoomCustomUI:ZoomCustomUI
+    public func onInitMeetingView() {
+  //      customMeetingVC = CustomMeetingViewController();
+      
+        
+//        [self.rootVC addChildViewController:self.customMeetingVC];
+//        [self.rootVC.view addSubview:self.customMeetingVC.view];
+//        [self.customMeetingVC didMoveToParentViewController:self.rootVC];
+//
+//        self.customMeetingVC.view.frame = self.rootVC.view.bounds;
+        zoomCustomUI.onInitMeetingView();
+    }
+    
+    public func onDestroyMeetingView() {
+//          [self.customMeetingVC willMoveToParentViewController:nil];
+//    [self.customMeetingVC.view removeFromSuperview];
+//    [self.customMeetingVC removeFromParentViewController];
+//    [self.customMeetingVC release];
+//    self.customMeetingVC = nil;
+        zoomCustomUI.onDestroyMeetingView();
+    }
+    
   var authenticationDelegate: AuthenticationDelegate
   var eventSink: FlutterEventSink? 
   public static func register(with registrar: FlutterPluginRegistrar) {
@@ -17,6 +39,7 @@ public class SwiftZoomPlugin: NSObject, FlutterPlugin,FlutterStreamHandler , Mob
 
   override init(){
     authenticationDelegate = AuthenticationDelegate()
+    zoomCustomUI = ZoomCustomUI();
   }
 
 
@@ -87,7 +110,7 @@ public class SwiftZoomPlugin: NSObject, FlutterPlugin,FlutterStreamHandler , Mob
         
         let meetingService = MobileRTC.shared().getMeetingService()
         let meetingSettings = MobileRTC.shared().getMeetingSettings()
-        
+        meetingService?.customizedUImeetingDelegate = self;
         if meetingService != nil {
             
             let arguments = call.arguments as! Dictionary<String, String?>

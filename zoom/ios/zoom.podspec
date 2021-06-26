@@ -18,10 +18,10 @@ A new flutter plugin project.
   s.platform = :ios, '8.0'
 
   # Flutter.framework does not contain a i386 slice.
-  s.pod_target_xcconfig = { 'OTHER_LDFLAGS' => '-framework MobileRTC', 'DEFINES_MODULE' => 'YES', 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386' }
+  s.pod_target_xcconfig = { 'OTHER_LDFLAGS' => '-framework MobileRTC  -framework  zoom_customui', 'DEFINES_MODULE' => 'YES', 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386' }
   s.swift_version = '5.0' 
   
-  s.preserve_paths = 'MobileRTC.framework', 'MobileRTCResources.bundle'
-  s.vendored_frameworks = 'MobileRTC.framework'
+  s.preserve_paths = 'MobileRTC.framework', 'zoom_customui.framework','MobileRTCResources.bundle'
+  s.vendored_frameworks = 'MobileRTC.framework', 'zoom_customui.framework'
   s.resource = 'MobileRTCResources.bundle'
 end
