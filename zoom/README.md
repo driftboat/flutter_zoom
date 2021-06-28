@@ -132,7 +132,7 @@ if (kIsWeb) {
       "tokenExp": long // token expire time, MIN:1800 seconds
     }
     ```
-    Example：  
+    PAYLOAD Example：  
     ```
     {
       "appKey": "xxxxxxxxxxxxxxxxxxxx", 
