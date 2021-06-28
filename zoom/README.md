@@ -122,7 +122,7 @@ if (kIsWeb) {
     
     You can get current timestamp from https://www.unixtimestamp.com/. 
     
-    Enter your "SDK App Secret" in "your-256-bit-secret",Get  token from the left. 
+    Replace "PAYLOAD" as bellow, Enter your "SDK App Secret" in "your-256-bit-secret",Get  token from the left. 
     
     ```
     {
