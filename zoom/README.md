@@ -128,7 +128,7 @@ if (kIsWeb) {
     {
       "appKey": "string", // Your SDK key
       "iat": long, // access token issue timestamp
-      "exp": long, // access token expire timestamp (The exp should be later or equal with tokenExp)
+      "exp": long, // access token expire timestamp (The exp should be later than or equal to tokenExp)
       "tokenExp": long // should be a timestamp that is at least 30 minutes later than the iat)
     }
     ```
