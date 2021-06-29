@@ -129,7 +129,7 @@ if (kIsWeb) {
       "appKey": "string", // Your SDK key
       "iat": long, // access token issue timestamp
       "exp": long, // access token expire timestamp (The exp should be later or equal with tokenExp)
-      "tokenExp": long // token expire time, MIN:1800 seconds, (This is timetamp not during,should be a timestamp that is at least 30 minutes later than the iat)
+      "tokenExp": long // should be a timestamp that is at least 30 minutes later than the iat)
     }
     ```
     PAYLOAD Example：  
