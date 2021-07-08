@@ -1,0 +1,6 @@
+framework module ZoomCustomUI {
+  umbrella header "ZoomCustomUI.h"
+
+  export *
+  module * { export * }
+}

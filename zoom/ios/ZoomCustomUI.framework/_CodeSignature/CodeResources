@@ -4,41 +4,41 @@
 <dict>
 	<key>files</key>
 	<dict>
-		<key>Headers/zoom_customui.h</key>
+		<key>Headers/ZoomCustomUI.h</key>
 		<data>
-		8w/O98jkBS2erjrbN4FXfhUJaQA=
+		o/Y/HIUttJK1BDisTTWYgzOLYj8=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		TPsgy3ElV1xr8fP8iigMbPs+khQ=
+		PAs/osSgh1ftSYa1HYcE0hYlMtc=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
-		o0nDdZem4H4601/kzp93sjgHVDQ=
+		vwwhfYz2rUFDGlGAQtMwaDJwz5c=
 		</data>
 	</dict>
 	<key>files2</key>
 	<dict>
-		<key>Headers/zoom_customui.h</key>
+		<key>Headers/ZoomCustomUI.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			8w/O98jkBS2erjrbN4FXfhUJaQA=
+			o/Y/HIUttJK1BDisTTWYgzOLYj8=
 			</data>
 			<key>hash2</key>
 			<data>
-			Smu3d4Xt7zP4KCFBqf0baAW5ErkKTz7CTSvmgir5Kio=
+			8/4XvoZFRKHjiLgvYo/MqpzdRTGt6jkptvam6n4M3Qw=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			o0nDdZem4H4601/kzp93sjgHVDQ=
+			vwwhfYz2rUFDGlGAQtMwaDJwz5c=
 			</data>
 			<key>hash2</key>
 			<data>
-			GuvX4DrGqdVok4ZmLsnW9KifVQAtsLC/1geVtKDAKK8=
+			tDHmQ/Gs4ooF1R7EFMOwiDOHzshLefy34D9g9gPuMAc=
 			</data>
 		</dict>
 	</dict>

@@ -1,18 +1,10 @@
 import Flutter
 import UIKit
 import MobileRTC
-import zoom_customui
+import ZoomCustomUI
 public class SwiftZoomPlugin: NSObject, FlutterPlugin,FlutterStreamHandler , MobileRTCMeetingServiceDelegate, MobileRTCCustomizedUIMeetingDelegate{
     var  zoomCustomUI:ZoomCustomUI
     public func onInitMeetingView() {
-  //      customMeetingVC = CustomMeetingViewController();
-      
-        
-//        [self.rootVC addChildViewController:self.customMeetingVC];
-//        [self.rootVC.view addSubview:self.customMeetingVC.view];
-//        [self.customMeetingVC didMoveToParentViewController:self.rootVC];
-//
-//        self.customMeetingVC.view.frame = self.rootVC.view.bounds;
         zoomCustomUI.onInitMeetingView();
     }
     
@@ -110,6 +102,7 @@ public class SwiftZoomPlugin: NSObject, FlutterPlugin,FlutterStreamHandler , Mob
         
         let meetingService = MobileRTC.shared().getMeetingService()
         let meetingSettings = MobileRTC.shared().getMeetingSettings()
+        meetingSettings?.enableCustomMeeting = true;
         meetingService?.customizedUImeetingDelegate = self;
         if meetingService != nil {
             

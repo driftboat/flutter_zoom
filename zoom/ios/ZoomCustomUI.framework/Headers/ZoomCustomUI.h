@@ -15,7 +15,8 @@ FOUNDATION_EXPORT const unsigned char zoom_customuiVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <zoom_customui/PublicHeader.h>
 
-@interface ZoomCustomUI : NSObject
+
+@interface ZoomCustomUI : NSObject 
 
 -(void)onInitMeetingView;
 -(void)onDestroyMeetingView;
