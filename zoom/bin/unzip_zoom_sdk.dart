@@ -1,7 +1,7 @@
 import 'dart:core';
 import 'dart:io';
 import 'package:archive/archive.dart';
-import 'package:dio/dio.dart';
+//import 'package:dio/dio.dart';
 
 void main(List<String> args) async {
   var location = Platform.script.toString();
@@ -23,7 +23,8 @@ void main(List<String> args) async {
   final archive = ZipDecoder().decodeBytes(bytes);
 
   var current = new File(location + '/ios/MobileRTC.framework/MobileRTC');
-  current.deleteSync();
+  var exist = await current.exists();
+  if (exist) current.deleteSync();
 
   for (final file in archive) {
     final filename = file.name;
@@ -78,9 +79,12 @@ Future<void> checkAndDownloadSDK(String location) async {
 
 Future<void> downloadFile(Uri uri, String savePath) async {
   print('Download ${uri.toString()} to $savePath');
-  var dio = Dio();
-  dio.options.connectTimeout = 1000000;
-  dio.options.receiveTimeout = 1000000;
-  dio.options.sendTimeout = 1000000;
-  await dio.downloadUri(uri, savePath);
+  // var dio = Dio();
+  // dio.options.connectTimeout = 1000000;
+  // dio.options.receiveTimeout = 1000000;
+  // dio.options.sendTimeout = 1000000;
+  // await dio.downloadUri(uri, savePath);
+  final request = await HttpClient().getUrl(uri);
+  final response = await request.close();
+  await response.pipe(File(savePath).openWrite());
 }
