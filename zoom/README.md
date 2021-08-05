@@ -7,7 +7,13 @@ Android: https://github.com/zoom/zoom-sdk-android/releases/tag/v5.2.42043.1112
  
 iOS: https://github.com/zoom/zoom-sdk-ios/releases/tag/v5.2.42037.1112
 
-## Installation
+## Installation from pub.dev
+
+After install the library, must run the follow script to get some sdk stuff for the first time:
+```shell script
+flutter pub run zoom:unzip_zoom_sdk
+```
+## Installation from github
 
 ```yaml
   zoom:
