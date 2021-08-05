@@ -4,11 +4,14 @@ import 'package:archive/archive.dart';
 import 'package:dio/dio.dart';
 
 void main(List<String> args) async {
-  var location = Platform.script
-      .toString()
-      .replaceFirst("file:///", "")
-      .replaceFirst("file://", "")
-      .replaceFirst("/bin/unzip_zoom_sdk.dart", "");
+  var location = Platform.script.toString();
+  if (Platform.isWindows) {
+    location = location.replaceFirst("file:///", "");
+  } else {
+    location = location.replaceFirst("file://", "");
+  }
+  location = location.replaceFirst("/bin/unzip_zoom_sdk.dart", "");
+
   var filename =
       location + '/ios-sdk/MobileRTC${(args.length == 0) ? "" : "-dev"}.zip';
 
