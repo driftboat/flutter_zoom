@@ -74,7 +74,7 @@ Future<void> checkAndDownloadSDK(String location) async {
 }
 
 Future<void> downloadFile(Uri uri, String savePath) async {
-  print('Download $uri.toString() to $savePath');
+  print('Download ${uri.toString()} to $savePath');
   var dio = Dio();
   dio.options.connectTimeout = 1000000;
   dio.options.receiveTimeout = 1000000;
