@@ -45,7 +45,7 @@ Future<void> checkAndDownloadSDK(String location) async {
   if (!exists) {
     await downloadFile(
         Uri.parse(
-            'https://raw.githubusercontent.com/driftboat/flutter_zoom/main/zoom/ios-sdk/MobileRTC.zip'),
+            'https://raw.githubusercontent.com/driftboat/flutter_zoom/1.0.1/zoom/ios-sdk/MobileRTC.zip'),
         iosSDKFile);
   }
 
@@ -54,7 +54,7 @@ Future<void> checkAndDownloadSDK(String location) async {
   if (!exists) {
     await downloadFile(
         Uri.parse(
-            'https://raw.githubusercontent.com/driftboat/flutter_zoom/main/zoom/ios-sdk/MobileRTC-dev.zip'),
+            'https://raw.githubusercontent.com/driftboat/flutter_zoom/1.0.1/zoom/ios-sdk/MobileRTC-dev.zip'),
         iosDevSDKFile);
   }
 
@@ -63,7 +63,7 @@ Future<void> checkAndDownloadSDK(String location) async {
   if (!exists) {
     await downloadFile(
         Uri.parse(
-            'https://raw.githubusercontent.com/driftboat/flutter_zoom/main/zoom/android/libs/commonlib.aar'),
+            'https://raw.githubusercontent.com/driftboat/flutter_zoom/1.0.1/zoom/android/libs/commonlib.aar'),
         androidCommonLibFile);
   }
   var androidRTCLibFile = location + '/android/libs/mobilertc.aar';
@@ -71,7 +71,7 @@ Future<void> checkAndDownloadSDK(String location) async {
   if (!exists) {
     await downloadFile(
         Uri.parse(
-            'https://raw.githubusercontent.com/driftboat/flutter_zoom/main/zoom/android/libs/mobilertc.aar'),
+            'https://raw.githubusercontent.com/driftboat/flutter_zoom/1.0.1/zoom/android/libs/mobilertc.aar'),
         androidRTCLibFile);
   }
 }
