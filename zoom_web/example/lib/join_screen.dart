@@ -6,6 +6,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:zoom_web/zoom_web.dart';
 import 'package:crypto/crypto.dart';
+
 //TODO change with your ApiKey and ApiSecret ,You can generate them according to this guide:
 //https://marketplace.zoom.us/docs/guides/build/jwt-app
 const jwtAPIKey = "ApiKey";
@@ -112,7 +113,7 @@ class _JoinWidgetState extends State<JoinWidget> {
     final hmacSha256 = Hmac(sha256, key); // HMAC-SHA256
     final digest = hmacSha256.convert(utf8.encode(msg));
     final hash = base64.encode(digest.bytes);
-    
+
     str = '${apiKey}.${meetingNumber}.${timestamp}.${role}.${hash}';
     bytes = utf8.encode(str);
     final signature = base64.encode(bytes);
@@ -121,12 +122,51 @@ class _JoinWidgetState extends State<JoinWidget> {
 
   joinMeeting(BuildContext context) {
     ZoomOptions zoomOptions = new ZoomOptions(
-      domain: "zoom.us",
-      //https://marketplace.zoom.us/docs/sdk/native-sdks/auth
-      //https://jwt.io/
-      //--todo from server
-      jwtToken: "your jwtToken",
-    );
+        domain: "zoom.us",
+        //https://marketplace.zoom.us/docs/sdk/native-sdks/auth
+        //https://jwt.io/
+        //--todo from server
+        jwtToken: "your jwtToken",
+        language: "en-US", // Optional
+        showMeetingHeader: true, // Optional
+        disableInvite: false, // Optional
+        disableCallOut: false, // Optional
+        disableRecord: false, // Optional
+        disableJoinAudio: false, // Optional
+        audioPanelAlwaysOpen: false, // Optional
+        isSupportAV: true, // Optional
+        isSupportChat: true, // Optional
+        isSupportQA: true, // Optional
+        isSupportCC: true, // Optional
+        isSupportPolling: true, // Optional
+        isSupportBreakout: true, // Optional
+        screenShare: true, // Optional
+        rwcBackup: '', // Optional
+        videoDrag: true, // Optional
+        sharingMode: 'both', // Optional
+        videoHeader: true, // Optional
+        isLockBottom: true, // Optional
+        isSupportNonverbal: true, // Optional
+        isShowJoiningErrorDialog: true, // Optional
+        disablePreview: false, // Optional
+        disableCORP: true, // Optional
+        inviteUrlFormat: '', // Optional
+        disableVOIP: false, // Optional
+        disableReport: false, // Optional
+        meetingInfo: const [
+          // Optional
+          'topic',
+          'host',
+          'mn',
+          'pwd',
+          'telPwd',
+          'invite',
+          'participant',
+          'dc',
+          'enctype',
+          'report'
+        ]);
+
     var meetingOptions = new ZoomMeetingOptions(
         userId: 'example',
         meetingId: meetingIdController.text,
