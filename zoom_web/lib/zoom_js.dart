@@ -8,7 +8,36 @@ import 'package:js/js.dart';
 @JS()
 @anonymous // needed along with factory constructor
 class InitParams {
-  external factory InitParams({leaveUrl, success, error});
+  external factory InitParams(
+      {leaveUrl,
+      showMeetingHeader,
+      disableInvite,
+      disableCallOut,
+      disableRecord,
+      disableJoinAudio,
+      audioPanelAlwaysOpen,
+      isSupportAV,
+      isSupportChat,
+      isSupportQA,
+      isSupportCC,
+      isSupportPolling,
+      isSupportBreakout,
+      screenShare,
+      rwcBackup,
+      videoDrag,
+      sharingMode,
+      videoHeader,
+      isLockBottom,
+      isSupportNonverbal,
+      isShowJoiningErrorDialog,
+      disablePreview,
+      disableCORP,
+      inviteUrlFormat,
+      disableVoIP,
+      disableReport,
+      meetingInfo,
+      success,
+      error});
   external String get leaveUrl;
 }
 
@@ -35,6 +64,7 @@ class MeetingStatus {
 @JS()
 class ZoomMtg {
   external static void setZoomJSLib(String path, String dir);
+  external static final i18n;
   external static void preLoadWasm();
   external static void prepareWebSDK();
   external static void prepareJssdk();

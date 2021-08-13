@@ -40,15 +40,41 @@ class ZoomWeb extends ZoomPlatform {
   @override
   Future<List> initZoom(ZoomOptions options) async {
     final Completer<List> completer = Completer();
-    // ZoomMtg.setZoomJSLib('https://dmogdx0jrul3u.cloudfront.net/1.9.1/lib', '/av');
     var sus = ZoomMtg.checkSystemRequirements();
-
     var susmap = convertToDart(sus);
     print(susmap);
+
+    ZoomMtg.i18n.load(options.language);
     ZoomMtg.preLoadWasm();
     ZoomMtg.prepareWebSDK();
     ZoomMtg.init(InitParams(
         leaveUrl: "/index.html",
+        showMeetingHeader: options.showMeetingHeader,
+        disableInvite: options.disableInvite,
+        disableCallOut: options.disableCallOut,
+        disableRecord: options.disableRecord,
+        disableJoinAudio: options.disableJoinAudio,
+        audioPanelAlwaysOpen: options.audioPanelAlwaysOpen,
+        isSupportAV: options.isSupportAV,
+        isSupportChat: options.isSupportChat,
+        isSupportQA: options.isSupportQA,
+        isSupportCC: options.isSupportCC,
+        isSupportPolling: options.isSupportPolling,
+        isSupportBreakout: options.isSupportBreakout,
+        screenShare: options.screenShare,
+        rwcBackup: options.rwcBackup,
+        videoDrag: options.videoDrag,
+        sharingMode: options.sharingMode,
+        videoHeader: options.videoHeader,
+        isLockBottom: options.isLockBottom,
+        isSupportNonverbal: options.isSupportNonverbal,
+        isShowJoiningErrorDialog: options.isShowJoiningErrorDialog,
+        disablePreview: options.disablePreview,
+        disableCORP: options.disableCORP,
+        inviteUrlFormat: options.inviteUrlFormat,
+        disableVoIP: options.disableVOIP,
+        disableReport: options.disableReport,
+        meetingInfo: options.meetingInfo,
         success: allowInterop((var res) {
           completer.complete([0, 0]);
         }),
@@ -73,7 +99,8 @@ class ZoomWeb extends ZoomPlatform {
     //     role: 0));
     ZoomMtg.join(JoinParams(
         meetingNumber: options.meetingId,
-        userName: options.displayName != null ? options.displayName:options.userId,
+        userName:
+            options.displayName != null ? options.displayName : options.userId,
         signature: options.jwtSignature!,
         apiKey: options.jwtAPIKey!,
         passWord: options.meetingPassword,
