@@ -93,21 +93,21 @@ Disable shrinkResources for release buid
 
 Add stylesheet to the head of index.html
 ```html
-<link type="text/css" rel="stylesheet" href="https://source.zoom.us/1.9.1/css/bootstrap.css" />
-<link type="text/css" rel="stylesheet" href="https://source.zoom.us/1.9.1/css/react-select.css" />
+<link type="text/css" rel="stylesheet" href="https://source.zoom.us/1.9.7/css/bootstrap.css" />
+<link type="text/css" rel="stylesheet" href="https://source.zoom.us/1.9.7/css/react-select.css" />
 ```
 Import ZoomMtg dependencies to the body of index.html
 ```html
 <!-- import ZoomMtg dependencies -->
-   <script src="https://source.zoom.us/1.9.1/lib/vendor/react.min.js"></script>
-   <script src="https://source.zoom.us/1.9.1/lib/vendor/react-dom.min.js"></script>
-   <script src="https://source.zoom.us/1.9.1/lib/vendor/redux.min.js"></script>
-   <script src="https://source.zoom.us/1.9.1/lib/vendor/redux-thunk.min.js"></script>
-   <script src="https://source.zoom.us/1.9.1/lib/vendor/lodash.min.js"></script>
-   <script src="https://source.zoom.us/1.9.1/lib/av/6331_js_media.min.js"></script>
+   <script src="https://source.zoom.us/1.9.7/lib/vendor/react.min.js"></script>
+   <script src="https://source.zoom.us/1.9.7/lib/vendor/react-dom.min.js"></script>
+   <script src="https://source.zoom.us/1.9.7/lib/vendor/redux.min.js"></script>
+   <script src="https://source.zoom.us/1.9.7/lib/vendor/redux-thunk.min.js"></script>
+   <script src="https://source.zoom.us/1.9.7/lib/vendor/lodash.min.js"></script>
+   <script src="https://source.zoom.us/1.9.7/lib/av/1508_js_media.min.js"></script>
 
    <!-- import ZoomMtg -->
-   <script src="https://source.zoom.us/zoom-meeting-1.9.1.min.js"></script>
+   <script src="https://source.zoom.us/zoom-meeting-1.9.7.min.js"></script>
 
    <script src="main.dart.js" type="application/javascript"></script>
 ```
