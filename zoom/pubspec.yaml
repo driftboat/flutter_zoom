@@ -1,5 +1,5 @@
 name: zoom
-description: A new flutter plugin project.
+description: A Flutter plugin for the Zoom Client SDK.
 version: 1.0.2+1
 repository: https://github.com/driftboat/flutter_zoom/tree/main/zoom
 
