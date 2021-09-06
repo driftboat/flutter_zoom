@@ -8,6 +8,7 @@ Android: https://github.com/zoom/zoom-sdk-android/releases/tag/v5.2.42043.1112
 iOS: https://github.com/zoom/zoom-sdk-ios/releases/tag/v5.2.42037.1112
 
 ## Installation from pub.dev
+https://pub.dev/packages/zoom
 
 After install the library, must run the follow script to get some sdk stuff for the first time:
 ```shell script
