@@ -1,3 +1,6 @@
+## 1.0.2+2
+* folders("ios-sdk" and "android/libs")  missing bug fixed
+
 ## 1.0.2+1
 * zoom_platform_interface to 1.0.2
 * zoom_web to 1.0.2
