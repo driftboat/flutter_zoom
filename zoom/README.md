@@ -123,7 +123,7 @@ if (kIsWeb) {
 ## example
 - Create SDK App JWT Token
   - Create SDK Key&Secret https://marketplace.zoom.us/docs/sdk/native-sdks/auth#key-secret-2
-  - Generate JWT Token from https://jwt.io/ for testing. （Get it from your server for distribution，You can get current timestamp from https://www.unixtimestamp.com/. ） 
+  - Generate JWT Token from https://jwt.io/ for testing. （Get it from your server for distribution，You can get current timestamp from https://www.unixtimestamp.com/. ）   
     Replace "PAYLOAD" as bellow, Enter your "SDK Secret" in "your-256-bit-secret",Get  token from the left. 
     
     ```
