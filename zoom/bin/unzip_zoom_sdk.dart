@@ -12,51 +12,52 @@ void main(List<String> args) async {
   }
   location = location.replaceFirst("/bin/unzip_zoom_sdk.dart", "");
 
-  var filename =
-      location + '/ios-sdk/MobileRTC${(args.length == 0) ? "" : "-dev"}.zip';
+  // var filename =
+  //     location + '/ios-sdk/MobileRTC${(args.length == 0) ? "" : "-dev"}.zip';
 
   await checkAndDownloadSDK(location);
-  print('Decompressing ' + filename);
+  // print('Decompressing ' + filename);
 
-  final bytes = File(filename).readAsBytesSync();
+  // final bytes = File(filename).readAsBytesSync();
 
-  final archive = ZipDecoder().decodeBytes(bytes);
+  // final archive = ZipDecoder().decodeBytes(bytes);
 
-  var current = new File(location + '/ios/MobileRTC.framework/MobileRTC');
-  var exist = await current.exists();
-  if (exist) current.deleteSync();
+  // var current = new File(location + '/ios/MobileRTC.framework/MobileRTC');
+  // var exist = await current.exists();
+  // if (exist) current.deleteSync();
 
-  for (final file in archive) {
-    final filename = file.name;
-    if (file.isFile) {
-      final data = file.content as List<int>;
-      File(location + '/ios/MobileRTC.framework/' + filename)
-        ..createSync(recursive: true)
-        ..writeAsBytesSync(data);
-    }
-  }
+  // for (final file in archive) {
+  //   final filename = file.name;
+  //   if (file.isFile) {
+  //     final data = file.content as List<int>;
+  //     File(location + '/ios/MobileRTC.framework/' + filename)
+  //       ..createSync(recursive: true)
+  //       ..writeAsBytesSync(data);
+  //   }
+  // }
 
   print('Complete');
 }
 
 Future<void> checkAndDownloadSDK(String location) async {
-  var iosSDKFile = location + '/ios-sdk/MobileRTC.zip';
+  var iosSDKFile = location +
+      '/ios/MobileRTC.xcframework/ios-arm64_armv7/MobileRTC.framework/MobileRTC';
   bool exists = await File(iosSDKFile).exists();
 
   if (!exists) {
     await downloadFile(
-        Uri.parse(
-            'https://raw.githubusercontent.com/driftboat/flutter_zoom/1.0.1/zoom/ios-sdk/MobileRTC.zip'),
+        Uri.parse('https://www.dropbox.com/s/44rv7hgvqbgm7j7/MobileRTC?dl=1'),
         iosSDKFile);
   }
 
-  var iosDevSDKFile = location + '/ios-sdk/MobileRTC-dev.zip';
-  exists = await File(iosDevSDKFile).exists();
+  var iosSimulateSDKFile = location +
+      '/ios/MobileRTC.xcframework/ios-i386_x86_64-simulator/MobileRTC.framework/MobileRTC';
+  exists = await File(iosSimulateSDKFile).exists();
+
   if (!exists) {
     await downloadFile(
-        Uri.parse(
-            'https://raw.githubusercontent.com/driftboat/flutter_zoom/1.0.1/zoom/ios-sdk/MobileRTC-dev.zip'),
-        iosDevSDKFile);
+        Uri.parse('https://www.dropbox.com/s/0qx52d1cb45oxku/MobileRTC?dl=1'),
+        iosSimulateSDKFile);
   }
 
   var androidCommonLibFile = location + '/android/libs/commonlib.aar';
