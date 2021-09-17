@@ -1,3 +1,6 @@
+## 1.0.3+1
+* bug fixed
+
 ## 1.0.3
 * add back appKey&appSecret
 
