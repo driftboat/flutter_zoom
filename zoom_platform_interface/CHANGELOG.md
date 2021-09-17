@@ -1,3 +1,6 @@
+## 1.0.3+2
+* jwtToken to optional
+
 ## 1.0.3+1
 * bug fixed
 

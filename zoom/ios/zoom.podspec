@@ -21,7 +21,7 @@ A new flutter plugin project.
   s.pod_target_xcconfig = { 'OTHER_LDFLAGS' => '-framework MobileRTC', 'DEFINES_MODULE' => 'YES', 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386' }
   s.swift_version = '5.0' 
   
-  s.preserve_paths = 'MobileRTC.framework', 'MobileRTCResources.bundle'
-  s.vendored_frameworks = 'MobileRTC.framework'
+  s.preserve_paths = 'MobileRTC.xcframework', 'MobileRTCResources.bundle'
+  s.vendored_frameworks = 'MobileRTC.xcframework'
   s.resource = 'MobileRTCResources.bundle'
 end

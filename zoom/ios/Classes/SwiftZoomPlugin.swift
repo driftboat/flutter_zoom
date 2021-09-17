@@ -67,7 +67,9 @@ public class SwiftZoomPlugin: NSObject, FlutterPlugin,FlutterStreamHandler , Mob
         
         let auth = MobileRTC.shared().getAuthService()
         auth?.delegate = self.authenticationDelegate.onAuth(result)
-        auth?.jwtToken = arguments["jwtToken"]
+//        if let jwtToken = arguments["jwtToken"] {
+//            auth?.jwtToken = jwtToken
+//        }
         if let appKey = arguments["appKey"] {
             auth?.clientKey = appKey
         }
@@ -105,18 +107,17 @@ public class SwiftZoomPlugin: NSObject, FlutterPlugin,FlutterStreamHandler , Mob
             meetingSettings?.setMuteAudioWhenJoinMeeting(parseBoolean(data: arguments["noAudio"]!, defaultValue: false))
             meetingSettings?.meetingShareHidden = parseBoolean(data: arguments["disableShare"]!, defaultValue: false)
             meetingSettings?.meetingInviteHidden = parseBoolean(data: arguments["disableDrive"]!, defaultValue: false)
-       
-            var params = [
-                kMeetingParam_Username: arguments["userId"]!!,
-                kMeetingParam_MeetingNumber: arguments["meetingId"]!!
-            ]
+            let joinMeetingParameters = MobileRTCMeetingJoinParam()
+            joinMeetingParameters.userName = arguments["userId"]!!
+            joinMeetingParameters.meetingNumber = arguments["meetingId"]!!
+           
             
             let hasPassword = arguments["meetingPassword"]! != nil
             if hasPassword {
-                params[kMeetingParam_MeetingPassword] = arguments["meetingPassword"]!!
+                joinMeetingParameters.password = arguments["meetingPassword"]!!
             }
             
-            let response = meetingService?.joinMeeting(with: params)
+            let response = meetingService?.joinMeeting(with: joinMeetingParameters)
             
             if let response = response {
                 print("Got response from join: \(response)")

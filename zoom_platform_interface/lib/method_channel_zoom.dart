@@ -19,7 +19,9 @@ class MethodChannelZoom extends ZoomPlatform {
     if (options.appSecret != null) {
       optionMap.putIfAbsent("appSecret", () => options.appSecret!);
     }
-    optionMap.putIfAbsent("jwtToken", () => options.jwtToken);
+    if (options.jwtToken != null) {
+      optionMap.putIfAbsent("jwtToken", () => options.jwtToken!);
+    }
     optionMap.putIfAbsent("domain", () => options.domain);
     return channel
         .invokeMethod<List>('init', optionMap)
