@@ -86,6 +86,12 @@ public class ZoomPlugin implements FlutterPlugin, MethodCallHandler,ActivityAwar
         ZoomSDKInitParams initParams = new ZoomSDKInitParams();
         initParams.jwtToken = options.get("jwtToken");
         initParams.domain = options.get("domain");
+        if(options.containsKey("appKey")){
+            initParams.appKey = options.get("appKey");
+        }
+        if(options.containsKey("appSecret")){
+            initParams.appSecret = options.get("appSecret");
+        }
         zoomSDK.initialize(
                 context,
                 new ZoomSDKInitializeListener() {
