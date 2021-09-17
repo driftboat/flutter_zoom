@@ -1,6 +1,6 @@
 name: zoom_platform_interface
 description: A common platform interface for the flutter_zoom plugin.
-version: 1.0.2
+version: 1.0.3
 repository: https://github.com/driftboat/flutter_zoom/tree/main/zoom_platform_interface
 
 environment:

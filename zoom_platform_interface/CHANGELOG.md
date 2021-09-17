@@ -1,3 +1,6 @@
+## 1.0.3
+* add back appKey&appSecret
+
 ## 1.0.2
 * Add new options to use on ZoomMtg.init() (Web implementation)
 
