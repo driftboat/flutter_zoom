@@ -1,3 +1,8 @@
+## 1.0.3
+* zoom-sdk-android-5.7.1.1268
+* zoom-sdk-ios-5.7.1.645
+* jwtToken to optional,add back "AppKey&AppSecrect"
+
 ## 1.0.2+2
 * folders("ios-sdk" and "android/libs")  missing bug fixed
 
