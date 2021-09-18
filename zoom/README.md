@@ -25,7 +25,7 @@ flutter pub run zoom:unzip_zoom_sdk
 ```
 After install the library, must run the follow script to get some sdk stuff for the first time:
 ```shell script
-dart bin/unzip_zoom_sdk.dart
+flutter pub run zoom:unzip_zoom_sdk
 ```
 
 ### iOS
