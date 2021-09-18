@@ -93,6 +93,8 @@ class _JoinWidgetState extends State<JoinWidget> {
       //https://jwt.io/
       //--todo from server
       jwtToken: "your jwtToken",
+      //appKey: "appKey", // Replace with with key got from the Zoom Marketplace ZOOM SDK Section
+      //appSecret: "appSecret", // Replace with with secret got from the Zoom Marketplace ZOOM SDK Section
     );
     var meetingOptions = new ZoomMeetingOptions(
         userId: 'example',

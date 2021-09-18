@@ -3,9 +3,9 @@ A Flutter plugin for the Zoom Client SDK.
 
 ## Zoom SDK Versions
 
-Android: https://github.com/zoom/zoom-sdk-android/releases/tag/v5.2.42043.1112
+Android: zoom-sdk-android-5.7.1.1268
  
-iOS: https://github.com/zoom/zoom-sdk-ios/releases/tag/v5.2.42037.1112
+iOS: zoom-sdk-ios-5.7.1.645
 
 ## Installation from pub.dev
 https://pub.dev/packages/zoom
@@ -22,6 +22,10 @@ flutter pub run zoom:unzip_zoom_sdk
       url: git@github.com:driftboat/flutter_zoom.git
       ref: main
       path: zoom
+```
+After install the library, must run the follow script to get some sdk stuff for the first time:
+```shell script
+flutter pub run zoom:unzip_zoom_sdk
 ```
 
 ### iOS
@@ -121,29 +125,47 @@ if (kIsWeb) {
 ```
 
 ## example
-- Create SDK App JWT Token
-  - Create SDK Key&Secret https://marketplace.zoom.us/docs/sdk/native-sdks/auth#key-secret-2
-  - Generate JWT Token from https://jwt.io/ for testing. （Get it from your server for distribution，You can get current timestamp from https://www.unixtimestamp.com/. ）   
-    Replace "PAYLOAD" as bellow, Enter your "SDK Secret" in "your-256-bit-secret",Get  "your jwtToken" from the left. 
-    
-    ```
-    {
-      "appKey": "string", // Your SDK key
-      "iat": long, // access token issue timestamp
-      "exp": long, // access token expire timestamp (The exp should be later than or equal to tokenExp)
-      "tokenExp": long // should be a timestamp that is at least 30 minutes later than the iat)
-    }
-    ```
-    PAYLOAD Example：  
-    ```
-    {
-      "appKey": "xxxxxxxxxxxxxxxxxxxx", 
-      "iat": 1615510799, 
-      "exp": 1647017999, 
-      "tokenExp": 1647017999 
-    }
-    ```
--  replace "your jwtToken" in "zoom/example/lib/join_screen.dart"
+- Auth zoom with "SDK App JWT Token"
+  - Create SDK App JWT Token
+    - Create SDK Key&Secret https://marketplace.zoom.us/docs/sdk/native-sdks/auth#key-secret-2
+    - Generate JWT Token from https://jwt.io/ for testing. （Get it from your server for distribution，You can get current timestamp from https://www.unixtimestamp.com/. ）   
+      Replace "PAYLOAD" as bellow, Enter your "SDK Secret" in "your-256-bit-secret",Get  "your jwtToken" from the left. 
+      
+      ```
+      {
+        "appKey": "string", // Your SDK key
+        "iat": long, // access token issue timestamp
+        "exp": long, // access token expire timestamp (The exp should be later than or equal to tokenExp)
+        "tokenExp": long // should be a timestamp that is at least 30 minutes later than the iat)
+      }
+      ```
+      PAYLOAD Example：  
+      ```
+      {
+        "appKey": "xxxxxxxxxxxxxxxxxxxx", 
+        "iat": 1615510799, 
+        "exp": 1647017999, 
+        "tokenExp": 1647017999 
+      }
+      ```
+  -  replace "your jwtToken" in "zoom/example/lib/join_screen.dart"
+  
+- If you don't want use jwtToken, You can Auth zoom with "SDK App Key&Secret"
+  - Comment out "your jwtToken" and Uncomment "appKey&appSecret", it should be like this:  
+  ```
+  ZoomOptions zoomOptions = new ZoomOptions(
+      domain: "zoom.us",
+      //https://marketplace.zoom.us/docs/sdk/native-sdks/auth
+      //https://jwt.io/
+      //--todo from server
+      //jwtToken: "your jwtToken",
+      appKey: "appKey", // Replace with with key got from the Zoom Marketplace ZOOM SDK Section
+      appSecret: "appSecret", // Replace with with secret got from the Zoom Marketplace ZOOM SDK Section
+    );
+  ```
+      
+
+
 
 # reference
 https://github.com/decodedhealth/flutter_zoom_plugin
