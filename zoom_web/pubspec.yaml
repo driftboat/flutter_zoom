@@ -1,6 +1,6 @@
 name: zoom_web
 description: Web platform implementation of flutter_zoom.
-version: 1.0.2
+version: 1.0.2+1
 repository: https://github.com/driftboat/flutter_zoom/tree/main/zoom_web
 
 environment:
