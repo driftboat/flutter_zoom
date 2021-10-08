@@ -1,6 +1,6 @@
 name: zoom
 description: A Flutter plugin for the Zoom Client SDK.
-version: 1.0.3
+version: 1.0.3+1
 repository: https://github.com/driftboat/flutter_zoom/tree/main/zoom
 
 environment:
@@ -11,7 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
   zoom_platform_interface: ^1.0.3+2 
-  zoom_web: ^1.0.2
+  zoom_web: ^1.0.2+1
   archive: ^3.0.0
 
 dev_dependencies:

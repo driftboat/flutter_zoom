@@ -1,3 +1,7 @@
+## 1.0.3+1
+* zoom_web to 1.0.2+1
+* zoom web example updated
+
 ## 1.0.3
 * zoom-sdk-android-5.7.1.1268
 * zoom-sdk-ios-5.7.1.645
