@@ -4,34 +4,39 @@ import 'dart:convert';
 //import 'package:dio/dio.dart';
 
 void main(List<String> args) async {
-  var sp = Platform.script.toFilePath();
-  var sd = sp.split(Platform.pathSeparator);
-  sd.removeLast();
-  var scriptDir = sd.join(Platform.pathSeparator);
-  var packageConfigPath = [scriptDir, '..', '..', '..', 'package_config.json']
-      .join(Platform.pathSeparator);
-  // print(packageConfigPath);
-  var jsonString = File(packageConfigPath).readAsStringSync();
-  // print(jsonString);
-  Map<String, dynamic> packages = jsonDecode(jsonString);
-  var packageList = packages["packages"];
-  String? zoomFileUri;
-  for (var package in packageList) {
-    if (package["name"] == "zoom") {
-      zoomFileUri = package["rootUri"];
+  var location = Platform.script.toString();
+  var isNewFlutter = location.contains(".snapshot");
+  if (isNewFlutter) {
+    var sp = Platform.script.toFilePath();
+    var sd = sp.split(Platform.pathSeparator);
+    sd.removeLast();
+    var scriptDir = sd.join(Platform.pathSeparator);
+    var packageConfigPath = [scriptDir, '..', '..', '..', 'package_config.json']
+        .join(Platform.pathSeparator);
+    // print(packageConfigPath);
+    var jsonString = File(packageConfigPath).readAsStringSync();
+    // print(jsonString);
+    Map<String, dynamic> packages = jsonDecode(jsonString);
+    var packageList = packages["packages"];
+    String? zoomFileUri;
+    for (var package in packageList) {
+      if (package["name"] == "zoom") {
+        zoomFileUri = package["rootUri"];
+      }
     }
+    if (zoomFileUri == null) {
+      print("zoom package not found!");
+      return;
+    }
+    location = zoomFileUri!;
   }
-  if (zoomFileUri == null) {
-    print("zoom package not found!");
-    return;
-  }
-  var location = zoomFileUri!;
   if (Platform.isWindows) {
     location = location.replaceFirst("file:///", "");
   } else {
     location = location.replaceFirst("file://", "");
   }
-  print(args);
+  if (!isNewFlutter)
+    location = location.replaceFirst("/bin/unzip_zoom_sdk.dart", "");
   // var filename =
   //     location + '/ios-sdk/MobileRTC${(args.length == 0) ? "" : "-dev"}.zip';
 
