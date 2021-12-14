@@ -1,3 +1,6 @@
+## 1.0.4
+* zoom install bug fixed for flutter 2.8.0
+
 ## 1.0.3+1
 * zoom_web to 1.0.2+1
 * zoom web example updated
