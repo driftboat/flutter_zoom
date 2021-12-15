@@ -105,6 +105,7 @@ Future<void> checkAndDownloadSDK(String location) async {
 
 Future<void> downloadFile(Uri uri, String savePath) async {
   print('Download ${uri.toString()} to $savePath');
+  File destinationFile = await File(savePath).create(recursive: true);
   // var dio = Dio();
   // dio.options.connectTimeout = 1000000;
   // dio.options.receiveTimeout = 1000000;
@@ -112,5 +113,5 @@ Future<void> downloadFile(Uri uri, String savePath) async {
   // await dio.downloadUri(uri, savePath);
   final request = await HttpClient().getUrl(uri);
   final response = await request.close();
-  await response.pipe(File(savePath).openWrite());
+  await response.pipe(destinationFile.openWrite());
 }
