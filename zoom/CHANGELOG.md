@@ -1,3 +1,6 @@
+## 1.0.3+3
+* zoom install bug fixed
+
 ## 1.0.3+2
 * zoom install bug fixed for flutter 2.8.0
 
