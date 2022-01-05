@@ -196,7 +196,7 @@ public class ZoomPlugin implements FlutterPlugin, MethodCallHandler,ActivityAwar
         return options.get(property) == null ? defaultValue : Boolean.parseBoolean(options.get(property));
     }
 
-    private boolean parseInt(Map<String, String> options, String property, int defaultValue) {
+    private int parseInt(Map<String, String> options, String property, int defaultValue) {
         return options.get(property) == null ? defaultValue : Integer.parseInt(options.get(property));
     }
 
