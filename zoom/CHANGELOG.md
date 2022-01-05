@@ -1,3 +1,6 @@
+## 1.0.3+4
+* add meetingViewOptions to ZoomMeetingOptions(Android Only)
+
 ## 1.0.3+3
 * zoom install bug fixed
 

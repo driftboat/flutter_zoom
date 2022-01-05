@@ -105,7 +105,10 @@ class _JoinWidgetState extends State<JoinWidget> {
         disableInvite: "true",
         disableShare: "true",
         noAudio: "false",
-        noDisconnectAudio: "false");
+        noDisconnectAudio: "false",
+        meetingViewOptions: ZoomMeetingOptions.NO_TEXT_PASSWORD +
+            ZoomMeetingOptions.NO_TEXT_MEETING_ID +
+            ZoomMeetingOptions.NO_BUTTON_PARTICIPANTS);
     var zoom = Zoom();
     zoom.init(zoomOptions).then((results) {
       if (results[0] == 0) {
