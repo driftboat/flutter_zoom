@@ -143,7 +143,7 @@ public class ZoomPlugin implements FlutterPlugin, MethodCallHandler,ActivityAwar
         opts.no_dial_in_via_phone = parseBoolean(options, "disableDialIn", false);
         opts.no_disconnect_audio = parseBoolean(options, "noDisconnectAudio", false);
         opts.no_audio = parseBoolean(options, "noAudio", false);
-
+        opts.meeting_views_options = parseInt(options, "meetingViewOptions", 0); 
         JoinMeetingParams params = new JoinMeetingParams();
 
         params.displayName = options.get("userId");
@@ -176,7 +176,9 @@ public class ZoomPlugin implements FlutterPlugin, MethodCallHandler,ActivityAwar
         opts.no_dial_in_via_phone = parseBoolean(options, "disableDialIn", false);
         opts.no_disconnect_audio = parseBoolean(options, "noDisconnectAudio", false);
         opts.no_audio = parseBoolean(options, "noAudio", false);
-
+        opts.meeting_views_options = parseInt(options, "meetingViewOptions", 0); 
+  
+        
         StartMeetingParamsWithoutLogin params = new StartMeetingParamsWithoutLogin();
 
         params.userId = options.get("userId");
@@ -192,6 +194,10 @@ public class ZoomPlugin implements FlutterPlugin, MethodCallHandler,ActivityAwar
 
     private boolean parseBoolean(Map<String, String> options, String property, boolean defaultValue) {
         return options.get(property) == null ? defaultValue : Boolean.parseBoolean(options.get(property));
+    }
+
+    private boolean parseInt(Map<String, String> options, String property, int defaultValue) {
+        return options.get(property) == null ? defaultValue : Integer.parseInt(options.get(property));
     }
 
 
