@@ -121,11 +121,35 @@ public class SwiftZoomPlugin: NSObject, FlutterPlugin,FlutterStreamHandler , Mob
             meetingSettings?.meetingShareHidden = parseBoolean(data: arguments["disableShare"]!, defaultValue: false)
             meetingSettings?.meetingInviteHidden = parseBoolean(data: arguments["disableDrive"]!, defaultValue: false)
  
-            let meetingViewOptions = parseInt(data: arguments["meetingViewOptions"]!, defaultValue: 0)
+            let meetingViewOptions = parseInt(data: arguments["meetingViewOptions"]!, defaultValue: 0)   
+            if (meetingViewOptions & MeetingViewOptions.NO_BUTTON_AUDIO) != 0 {
+                meetingSettings?.meetingAudioHidden = true
+            }
+            if (meetingViewOptions & MeetingViewOptions.NO_BUTTON_LEAVE) != 0 {
+                meetingSettings?.meetingLeaveHidden = true
+            }
+            if (meetingViewOptions & MeetingViewOptions.NO_BUTTON_MORE) != 0 {
+                meetingSettings?.meetingMoreHidden = true
+            }
+            if (meetingViewOptions & MeetingViewOptions.NO_BUTTON_PARTICIPANTS) != 0 {
+                meetingSettings?.meetingParticipantHidden = true
+            }
+            if (meetingViewOptions & MeetingViewOptions.NO_BUTTON_SWITCH_AUDIO_SOURCE) != 0 {
+               
+            }
+            if (meetingViewOptions & MeetingViewOptions.NO_BUTTON_SWITCH_CAMERA) != 0 {
+                
+            }
+            if (meetingViewOptions & MeetingViewOptions.NO_BUTTON_VIDEO) != 0 {
+                meetingSettings?.meetingVideoHidden = true
+            }
+            if (meetingViewOptions & MeetingViewOptions.NO_TEXT_MEETING_ID) != 0 {
+                meetingSettings?.meetingTitleHidden = true
+            }
             if (meetingViewOptions & MeetingViewOptions.NO_TEXT_PASSWORD) != 0 {
                 meetingSettings?.meetingPasswordHidden = true
             }
-            
+          
             let joinMeetingParameters = MobileRTCMeetingJoinParam()
             joinMeetingParameters.userName = arguments["userId"]!!
             joinMeetingParameters.meetingNumber = arguments["meetingId"]!!
@@ -163,11 +187,35 @@ public class SwiftZoomPlugin: NSObject, FlutterPlugin,FlutterStreamHandler , Mob
             meetingSettings?.meetingShareHidden = parseBoolean(data: arguments["disableShare"]!, defaultValue: false)
             meetingSettings?.meetingInviteHidden = parseBoolean(data: arguments["disableDrive"]!, defaultValue: false)
             
-            let meetingViewOptions = parseInt(data: arguments["meetingViewOptions"]!, defaultValue: 0)
+            let meetingViewOptions = parseInt(data: arguments["meetingViewOptions"]!, defaultValue: 0)   
+            if (meetingViewOptions & MeetingViewOptions.NO_BUTTON_AUDIO) != 0 {
+                meetingSettings?.meetingAudioHidden = true
+            }
+            if (meetingViewOptions & MeetingViewOptions.NO_BUTTON_LEAVE) != 0 {
+                meetingSettings?.meetingLeaveHidden = true
+            }
+            if (meetingViewOptions & MeetingViewOptions.NO_BUTTON_MORE) != 0 {
+                meetingSettings?.meetingMoreHidden = true
+            }
+            if (meetingViewOptions & MeetingViewOptions.NO_BUTTON_PARTICIPANTS) != 0 {
+                meetingSettings?.meetingParticipantHidden = true
+            }
+            if (meetingViewOptions & MeetingViewOptions.NO_BUTTON_SWITCH_AUDIO_SOURCE) != 0 {
+               
+            }
+            if (meetingViewOptions & MeetingViewOptions.NO_BUTTON_SWITCH_CAMERA) != 0 {
+                
+            }
+            if (meetingViewOptions & MeetingViewOptions.NO_BUTTON_VIDEO) != 0 {
+                meetingSettings?.meetingVideoHidden = true
+            }
+            if (meetingViewOptions & MeetingViewOptions.NO_TEXT_MEETING_ID) != 0 {
+                meetingSettings?.meetingTitleHidden = true
+            }
             if (meetingViewOptions & MeetingViewOptions.NO_TEXT_PASSWORD) != 0 {
                 meetingSettings?.meetingPasswordHidden = true
             }
-            
+
             let user: MobileRTCMeetingStartParam4WithoutLoginUser = MobileRTCMeetingStartParam4WithoutLoginUser.init()
             
             user.userType = .apiUser
