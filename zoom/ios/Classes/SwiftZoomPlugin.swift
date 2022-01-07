@@ -177,7 +177,16 @@ public class SwiftZoomPlugin: NSObject, FlutterPlugin,FlutterStreamHandler , Mob
         return result
     }
     
-    
+    private func parseInt(data: String?, defaultValue: Int) -> Int {
+        var result: Int
+        
+        if let unwrappeData = data {
+            result = NSString(string: unwrappeData).integerValue
+        } else {
+            result = defaultValue
+        }
+        return result
+    }
     
     
     public func onMeetingError(_ error: MobileRTCMeetError, message: String?) {
