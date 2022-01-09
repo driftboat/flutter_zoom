@@ -22,13 +22,14 @@ void main(List<String> args) async {
     for (var package in packageList) {
       if (package["name"] == "zoom") {
         zoomFileUri = package["rootUri"];
+        break;
       }
     }
     if (zoomFileUri == null) {
       print("zoom package not found!");
       return;
     }
-    location = zoomFileUri!;
+    location = zoomFileUri;
   }
   if (Platform.isWindows) {
     location = location.replaceFirst("file:///", "");
