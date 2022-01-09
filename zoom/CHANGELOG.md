@@ -1,3 +1,6 @@
+## 1.0.3+5
+* add meetingViewOptions to ZoomMeetingOptions(Android&iOS)
+
 ## 1.0.3+4
 * add meetingViewOptions to ZoomMeetingOptions(Android Only)
 
