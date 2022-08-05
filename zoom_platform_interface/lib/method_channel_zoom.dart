@@ -9,9 +9,8 @@ class MethodChannelZoom extends ZoomPlatform {
       EventChannel('plugins.vurilo/zoom_event_stream');
   @override
   Future<List> initZoom(ZoomOptions options) async {
-    assert(options != null);
 
-    var optionMap = new Map<String, String>();
+    var optionMap = Map<String, String>();
     if (options.appKey != null) {
       optionMap.putIfAbsent("appKey", () => options.appKey!);
     }
@@ -29,10 +28,9 @@ class MethodChannelZoom extends ZoomPlatform {
 
   @override
   Future<bool> startMeeting(ZoomMeetingOptions options) async {
-    assert(options != null);
     assert(options.zoomAccessToken != null);
     assert(options.displayName != null);
-    var optionMap = new Map<String, String>();
+    var optionMap = Map<String, String>();
     optionMap.putIfAbsent("userId", () => options.userId);
     optionMap.putIfAbsent("displayName", () => options.displayName!);
     optionMap.putIfAbsent("meetingId", () => options.meetingId);
@@ -57,8 +55,7 @@ class MethodChannelZoom extends ZoomPlatform {
 
   @override
   Future<bool> joinMeeting(ZoomMeetingOptions options) async {
-    assert(options != null);
-    var optionMap = new Map<String, String>();
+    var optionMap = Map<String, String>();
     optionMap.putIfAbsent("userId", () => options.userId);
     optionMap.putIfAbsent("meetingId", () => options.meetingId);
     optionMap.putIfAbsent("meetingPassword", () => options.meetingPassword);
@@ -80,9 +77,8 @@ class MethodChannelZoom extends ZoomPlatform {
 
   @override
   Future<List> meetingStatus(String meetingId) async {
-    assert(meetingId != null);
 
-    var optionMap = new Map<String, String>();
+    var optionMap = Map<String, String>();
     optionMap.putIfAbsent("meetingId", () => meetingId);
 
     return channel
