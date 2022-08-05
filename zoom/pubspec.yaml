@@ -10,8 +10,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  zoom_platform_interface:
-    path: ../zoom_platform_interface
 
 dev_dependencies:
   flutter_test:
