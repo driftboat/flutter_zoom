@@ -1,13 +1,12 @@
 import 'package:flutter/services.dart';
-import 'package:zoom_platform_interface/zoom_options.dart';
 import 'package:zoom_platform_interface/zoom_platform_interface.dart';
 
 class MethodChannelZoom extends ZoomPlatform {
-  final MethodChannel channel = MethodChannel('plugins.webcare/zoom_channel');
+  final MethodChannel channel = MethodChannel('plugins.vurilo/zoom_channel');
 
   /// The event channel used to interact with the native platform.
   final EventChannel eventChannel =
-      EventChannel('plugins.webcare/zoom_event_stream');
+      EventChannel('plugins.vurilo/zoom_event_stream');
   @override
   Future<List> initZoom(ZoomOptions options) async {
     assert(options != null);

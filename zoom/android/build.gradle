@@ -1,4 +1,4 @@
-group 'com.webcare.zoom'
+group 'com.vurilo.zoom'
 version '1.0'
 
 buildscript {

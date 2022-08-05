@@ -72,7 +72,8 @@ Future<void> checkAndDownloadSDK(String location) async {
 
   if (!exists) {
     await downloadFile(
-        Uri.parse('https://www.dropbox.com/s/44rv7hgvqbgm7j7/MobileRTC?dl=1'),
+        Uri.parse(
+            'https://vurilo-zoom-sdks.s3.amazonaws.com/zoom_ios/MobileRTC'),
         iosSDKFile);
   }
 
@@ -82,7 +83,8 @@ Future<void> checkAndDownloadSDK(String location) async {
 
   if (!exists) {
     await downloadFile(
-        Uri.parse('https://www.dropbox.com/s/0qx52d1cb45oxku/MobileRTC?dl=1'),
+        Uri.parse(
+            'https://vurilo-zoom-sdks.s3.amazonaws.com/zoom_ios/simulator/MobileRTC'),
         iosSimulateSDKFile);
   }
 
@@ -91,7 +93,7 @@ Future<void> checkAndDownloadSDK(String location) async {
   if (!exists) {
     await downloadFile(
         Uri.parse(
-            'https://www.dropbox.com/s/lcjoc2evrmeucte/commonlib.aar?dl=1'),
+            'https://vurilo-zoom-sdks.s3.amazonaws.com/zoom_android/commonlib.aar'),
         androidCommonLibFile);
   }
   var androidRTCLibFile = location + '/android/libs/mobilertc.aar';
@@ -99,7 +101,7 @@ Future<void> checkAndDownloadSDK(String location) async {
   if (!exists) {
     await downloadFile(
         Uri.parse(
-            'https://www.dropbox.com/s/exe1aa0aflyh53f/mobilertc.aar?dl=1'),
+            'https://vurilo-zoom-sdks.s3.amazonaws.com/zoom_android/mobilertc.aar'),
         androidRTCLibFile);
   }
 }
