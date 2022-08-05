@@ -1,7 +1,7 @@
 import 'package:flutter/services.dart';
 import 'package:zoom_platform_interface/zoom_platform_interface.dart';
 
-class MethodChannelZoom extends ZoomPlatform {
+class ZoomView extends ZoomPlatform {
   final MethodChannel channel = MethodChannel('plugins.vurilo/zoom_channel');
 
   /// The event channel used to interact with the native platform.
@@ -9,7 +9,6 @@ class MethodChannelZoom extends ZoomPlatform {
       EventChannel('plugins.vurilo/zoom_event_stream');
   @override
   Future<List> initZoom(ZoomOptions options) async {
-
     var optionMap = Map<String, String>();
     if (options.appKey != null) {
       optionMap.putIfAbsent("appKey", () => options.appKey!);
@@ -77,7 +76,6 @@ class MethodChannelZoom extends ZoomPlatform {
 
   @override
   Future<List> meetingStatus(String meetingId) async {
-
     var optionMap = Map<String, String>();
     optionMap.putIfAbsent("meetingId", () => meetingId);
 
