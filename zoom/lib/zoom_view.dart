@@ -1,5 +1,5 @@
 import 'package:flutter/services.dart';
-import 'package:zoom_platform_interface/zoom_platform_interface.dart';
+import 'package:zoom/zoom_platform_interface.dart';
 
 class ZoomView extends ZoomPlatform {
   final MethodChannel channel = MethodChannel('plugins.vurilo/zoom_channel');

@@ -1,8 +1,6 @@
 import 'dart:async';
 
-import 'package:zoom_platform_interface/zoom_platform_interface.dart';
-export 'package:zoom_platform_interface/zoom_platform_interface.dart'
-    show ZoomOptions, ZoomMeetingOptions;
+import 'package:zoom/zoom_platform_interface.dart';
 
 class Zoom {
   Future<List> init(ZoomOptions options) async =>
