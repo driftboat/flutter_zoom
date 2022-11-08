@@ -1,7 +1,7 @@
 [
   {
-    "shortDescription" : "",
     "metadataOutputVersion" : "3.0",
+    "storagePrecision" : "Float32",
     "outputSchema" : [
       {
         "hasShapeFlexibility" : "0",
@@ -34,13 +34,11 @@
         "type" : "MultiArray"
       }
     ],
-    "version" : "",
     "modelParameters" : [
 
     ],
-    "author" : "",
     "specificationVersion" : 1,
-    "license" : "",
+    "computePrecision" : "Float16",
     "isUpdatable" : "0",
     "availability" : {
       "macOS" : "10.13",
@@ -49,9 +47,23 @@
       "iOS" : "11.0",
       "macCatalyst" : "11.0"
     },
+    "neuralNetworkLayerTypeHistogram" : {
+      "Concat" : 1,
+      "ActivationLinear" : 60,
+      "Flatten" : 3,
+      "ActivationSigmoidHard" : 30,
+      "Add" : 10,
+      "Convolution" : 45,
+      "ActivationSigmoid" : 1,
+      "InnerProduct" : 6
+    },
     "modelType" : {
       "name" : "MLModelType_neuralNetwork"
     },
+    "userDefinedMetadata" : {
+      "coremltoolsVersion" : "3.4"
+    },
+    "generatedClassName" : "flm",
     "inputSchema" : [
       {
         "height" : "112",
@@ -66,20 +78,6 @@
         "name" : "input_1"
       }
     ],
-    "userDefinedMetadata" : {
-      "coremltoolsVersion" : "3.4"
-    },
-    "generatedClassName" : "flm",
-    "neuralNetworkLayerTypeHistogram" : {
-      "Concat" : 1,
-      "ActivationLinear" : 60,
-      "Flatten" : 3,
-      "ActivationSigmoidHard" : 30,
-      "Add" : 10,
-      "Convolution" : 45,
-      "ActivationSigmoid" : 1,
-      "InnerProduct" : 6
-    },
     "method" : "predict"
   }
 ]

@@ -1,7 +1,7 @@
 [
   {
-    "shortDescription" : "",
     "metadataOutputVersion" : "3.0",
+    "storagePrecision" : "Float32",
     "outputSchema" : [
       {
         "hasShapeFlexibility" : "0",
@@ -14,13 +14,11 @@
         "type" : "MultiArray"
       }
     ],
-    "version" : "",
     "modelParameters" : [
 
     ],
-    "author" : "",
     "specificationVersion" : 1,
-    "license" : "",
+    "computePrecision" : "Float16",
     "isUpdatable" : "0",
     "availability" : {
       "macOS" : "10.13",
@@ -29,9 +27,21 @@
       "iOS" : "11.0",
       "macCatalyst" : "11.0"
     },
+    "neuralNetworkLayerTypeHistogram" : {
+      "Deconvolution" : 1,
+      "Convolution" : 51,
+      "ActivationSigmoid" : 1,
+      "BatchNorm" : 27,
+      "ActivationReLU" : 39,
+      "Add" : 9
+    },
     "modelType" : {
       "name" : "MLModelType_neuralNetwork"
     },
+    "userDefinedMetadata" : {
+
+    },
+    "generatedClassName" : "bgr_hori_iphone",
     "inputSchema" : [
       {
         "height" : "192",
@@ -46,18 +56,6 @@
         "name" : "input"
       }
     ],
-    "userDefinedMetadata" : {
-
-    },
-    "generatedClassName" : "bgr_hori_iphone",
-    "neuralNetworkLayerTypeHistogram" : {
-      "Deconvolution" : 1,
-      "Convolution" : 51,
-      "ActivationSigmoid" : 1,
-      "BatchNorm" : 27,
-      "ActivationReLU" : 39,
-      "Add" : 9
-    },
     "method" : "predict"
   }
 ]

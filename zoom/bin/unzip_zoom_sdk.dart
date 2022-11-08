@@ -72,7 +72,7 @@ Future<void> checkAndDownloadSDK(String location) async {
 
   if (!exists) {
     await downloadFile(
-        Uri.parse('https://www.dropbox.com/s/44rv7hgvqbgm7j7/MobileRTC?dl=1'),
+        Uri.parse('https://com21-static.s3.sa-east-1.amazonaws.com/zoom/ios/ios-arm64_armv7/MobileRTC?dl=1'),
         iosSDKFile);
   }
 
@@ -82,7 +82,7 @@ Future<void> checkAndDownloadSDK(String location) async {
 
   if (!exists) {
     await downloadFile(
-        Uri.parse('https://www.dropbox.com/s/0qx52d1cb45oxku/MobileRTC?dl=1'),
+        Uri.parse('https://com21-static.s3.sa-east-1.amazonaws.com/zoom/ios/ios-x86_64-simulator/MobileRTC'),
         iosSimulateSDKFile);
   }
 
