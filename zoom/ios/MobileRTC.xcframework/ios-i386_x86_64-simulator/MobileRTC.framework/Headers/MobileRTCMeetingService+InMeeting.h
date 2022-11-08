@@ -9,7 +9,6 @@
 #import <MobileRTC/MobileRTC.h>
 #import <MobileRTC/MobileRTCMeetingUserInfo.h>
 #import <MobileRTC/MobileRTCMeetingChat.h>
-#import "MobileRTCE2EMeetingKey.h"
 
 /*!
  @brief Set to provide interfaces for meeting events
@@ -226,6 +225,23 @@
  @warning Only iPhone can use this method
  */
 - (void)switchToDriveScene;
+
+/*!
+ @brief show app signaling pannel in designated position of container view.
+ @param containerView the view container to show app signaling pannel.
+ @param originXY the origin position of app signaling pannel in container view.
+ @return MobileRTCANNError_Success means the operation succeed, otherwise not
+ @warning originXY only take effect on iPad device, behavior of iphone always pop up from the bottom with the device width.
+ */
+- (MobileRTCANNError)showAANPanelInView:(UIView *_Nullable)containerView originPoint:(CGPoint)originXY;
+
+/*!
+ @brief hide app signaling pannel.
+ @return MobileRTCANNError_Success means the operation succeed, otherwise not
+ @warning suggest to hide ANNPannel when device orietation changed or trait collection changed to avoid layout issues
+ */
+- (MobileRTCANNError)hideAANPanel;
+
 
 #pragma mark - Q&A Related
 /*!

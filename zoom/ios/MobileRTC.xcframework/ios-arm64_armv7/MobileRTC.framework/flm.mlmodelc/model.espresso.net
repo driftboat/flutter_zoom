@@ -1,23 +1,4 @@
 {
-  "transform_params" : {
-    "input_1" : {
-      "bias_a" : 0,
-      "bias_g" : -2.0176990032196045,
-      "bias_r" : -2.1460177898406982,
-      "bias_b" : -1.7964601516723633,
-      "center_mean" : 0,
-      "is_network_bgr" : 1,
-      "scale" : 0.017352074384689331
-    }
-  },
-  "properties" : {
-
-  },
-  "analyses" : {
-
-  },
-  "format_version" : 200,
-  "storage" : "model.espresso.weights",
   "layers" : [
     {
       "pad_r" : 1,
@@ -2784,5 +2765,27 @@
       "name" : "pose",
       "nB" : 32
     }
-  ]
+  ],
+  "transform_params" : {
+    "input_1" : {
+      "bias_a" : 0,
+      "bias_g" : -2.0176990032196045,
+      "bias_r" : -2.1460177898406982,
+      "bias_b" : -1.7964601516723633,
+      "center_mean" : 0,
+      "is_network_bgr" : 1,
+      "scale" : 0.017352074384689331
+    }
+  },
+  "storage" : "model.espresso.weights",
+  "metadata_in_weights" : [
+
+  ],
+  "properties" : {
+
+  },
+  "analyses" : {
+
+  },
+  "format_version" : 200
 }

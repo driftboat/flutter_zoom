@@ -106,4 +106,23 @@
  @return The result of operation. 
  */
 - (MobileRTCCameraError)switchMyCamera;
+
+/*!
+ @brief Qurry if the account support follow host video order feature or not.
+ @return Yes means support, otherwise not.
+ */
+- (BOOL)isSupportFollowHostVideoOrder;
+
+/*!
+ @brief Qurry if follow host video order or not currently.
+ @return Yes means follow, otherwise not.
+ */
+- (BOOL)isFollowHostVideoOrderOn;
+
+/*!
+ @brief get follow host video order array currently.
+ @return userId array.
+ */
+- (NSArray <NSNumber *>*)getVideoOrderList;
+
 @end

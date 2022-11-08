@@ -1,7 +1,7 @@
 [
   {
-    "shortDescription" : "",
     "metadataOutputVersion" : "3.0",
+    "storagePrecision" : "Float32",
     "outputSchema" : [
       {
         "hasShapeFlexibility" : "0",
@@ -14,13 +14,11 @@
         "type" : "MultiArray"
       }
     ],
-    "version" : "",
     "modelParameters" : [
 
     ],
-    "author" : "",
     "specificationVersion" : 1,
-    "license" : "",
+    "computePrecision" : "Float16",
     "isUpdatable" : "0",
     "availability" : {
       "macOS" : "10.13",
@@ -29,9 +27,25 @@
       "iOS" : "11.0",
       "macCatalyst" : "11.0"
     },
+    "neuralNetworkLayerTypeHistogram" : {
+      "Concat" : 1,
+      "ActivationReLU" : 52,
+      "Softmax" : 1,
+      "Add" : 12,
+      "PoolingAverage" : 1,
+      "Deconvolution" : 1,
+      "BatchNorm" : 38,
+      "Convolution" : 55,
+      "ActivationSigmoid" : 1,
+      "PaddingConstant" : 1
+    },
     "modelType" : {
       "name" : "MLModelType_neuralNetwork"
     },
+    "userDefinedMetadata" : {
+
+    },
+    "generatedClassName" : "bgr_hori_ipad",
     "inputSchema" : [
       {
         "height" : "144",
@@ -46,22 +60,6 @@
         "name" : "input"
       }
     ],
-    "userDefinedMetadata" : {
-
-    },
-    "generatedClassName" : "bgr_hori_ipad",
-    "neuralNetworkLayerTypeHistogram" : {
-      "Concat" : 1,
-      "ActivationReLU" : 52,
-      "Softmax" : 1,
-      "Add" : 12,
-      "PoolingAverage" : 1,
-      "Deconvolution" : 1,
-      "BatchNorm" : 38,
-      "Convolution" : 55,
-      "ActivationSigmoid" : 1,
-      "PaddingConstant" : 1
-    },
     "method" : "predict"
   }
 ]
