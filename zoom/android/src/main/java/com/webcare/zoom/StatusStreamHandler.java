@@ -10,32 +10,45 @@ import us.zoom.sdk.MeetingServiceListener;
 import us.zoom.sdk.MeetingStatus;
 import us.zoom.sdk.MeetingParameter;
 
+/**
+ * This class implements the handler for the Zoom meeting event in the flutter event channel
+ */
+public class StatusStreamHandler implements EventChannel.StreamHandler {
+    private MeetingService meetingService;
+    private MeetingServiceListener statusListener;
 
-class GiMeetingServiceListener implements MeetingServiceListener {
-
-    public EventChannel.EventSink events;
-
-    GiMeetingServiceListener(EventChannel.EventSink _events) {
-        this.events = _events;
+    public StatusStreamHandler(MeetingService meetingService) {
+        this.meetingService = meetingService;
     }
 
     @Override
-    public void onMeetingStatusChanged(MeetingStatus meetingStatus, int errorCode, int internalErrorCode) {
+    public void onListen(Object arguments, final EventChannel.EventSink events) {
+        statusListener = new MeetingServiceListener() {
+            @Override
+            public void onMeetingStatusChanged(MeetingStatus meetingStatus, int errorCode, int internalErrorCode) {
 
-        if(meetingStatus == MeetingStatus.MEETING_STATUS_FAILED &&
-                errorCode == MeetingError.MEETING_ERROR_CLIENT_INCOMPATIBLE) {
-            this.events.success(Arrays.asList("MEETING_STATUS_UNKNOWN", "Version of ZoomSDK is too low"));
-            return;
-        }
+                if(meetingStatus == MeetingStatus.MEETING_STATUS_FAILED &&
+                        errorCode == MeetingError.MEETING_ERROR_CLIENT_INCOMPATIBLE) {
+                    events.success(Arrays.asList("MEETING_STATUS_UNKNOWN", "Version of ZoomSDK is too low"));
+                    return;
+                }
 
-        this.events.success(getMeetingStatusMessage(meetingStatus));
+                events.success(getMeetingStatusMessage(meetingStatus));
+            }
+			
+			@Override
+			public void onMeetingParameterNotification(MeetingParameter meetingParameter) {
+				System.out.println("On meeting parameter notification");
+			}
+        };
+
+        this.meetingService.addListener(statusListener);
     }
-
     @Override
-    public void onMeetingParameterNotification(MeetingParameter meetingParameter) {
-        System.out.println("On meeting parameter notification");
+    public void onCancel(Object arguments) {
+        this.meetingService.removeListener(statusListener);
     }
-
+	
     private List<String> getMeetingStatusMessage(MeetingStatus meetingStatus) {
         String[] message = new String[2];
 
@@ -81,29 +94,5 @@ class GiMeetingServiceListener implements MeetingServiceListener {
         }
 
         return Arrays.asList(message);
-    }
-}
-
-/**
- * This class implements the handler for the Zoom meeting event in the flutter event channel
- */
-public class StatusStreamHandler implements EventChannel.StreamHandler {
-    private MeetingService meetingService;
-    private GiMeetingServiceListener statusListener;
-
-    public StatusStreamHandler(MeetingService meetingService) {
-        this.meetingService = meetingService;
-    }
-
-    @Override
-    public void onListen(Object arguments, final EventChannel.EventSink events) {
-        statusListener = new GiMeetingServiceListener(events);
-
-        this.meetingService.addListener(statusListener);
-    }
-
-    @Override
-    public void onCancel(Object arguments) {
-        this.meetingService.removeListener(statusListener);
     }
 }
