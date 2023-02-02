@@ -73,7 +73,7 @@ Future<void> checkAndDownloadSDK(String location) async {
   if (!exists) {
     await downloadFile(
         Uri.parse(
-            'https://vurilo-zoom-sdks.s3.amazonaws.com/zoom_ios/MobileRTC'),
+            'https://vurilo-zoom-sdk.s3.ap-south-1.amazonaws.com/ios/MobileRTC'),
         iosSDKFile);
   }
 
