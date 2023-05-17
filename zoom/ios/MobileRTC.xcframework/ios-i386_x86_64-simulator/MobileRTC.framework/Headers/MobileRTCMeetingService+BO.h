@@ -38,6 +38,11 @@
 - (MobileRTCBOData * _Nullable)getDataHelper;
 
 /*!
+@brief is user are host in mast meeting.
+*/
+- (BOOL)isMasterMeetingHost;
+
+/*!
 @brief is BO meeting started.
 */
 - (BOOL)isBOMeetingStarted;

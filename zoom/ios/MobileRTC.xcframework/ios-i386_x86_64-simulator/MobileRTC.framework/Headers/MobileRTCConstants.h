@@ -64,10 +64,6 @@ typedef NS_ENUM(NSUInteger, MobileRTCLoginFailReason) {
     MobileRTCLoginFailReason_LoginTokenInvalid,
     /// User disagree login Disclaimer
     MobileRTCLoginFailReason_UserDisagreeLoginDisclaimer,
-    /// Need MFA auth
-    MobileRTCLoginFailReason_MFARequired,
-    /// Need confirm birthday
-    MobileRTCLoginFailReason_NeedBirthdayAsk,
     ///Login fail other reason.
     MobileRTCLoginFailReason_OtherIssue = 100,
 };
@@ -887,27 +883,6 @@ typedef NS_ENUM(NSUInteger, MobileRTCRecordingStatus) {
 };
 
 /*!
- @brief Enumeration of sharing status.
- */
-typedef NS_ENUM(NSUInteger, MobileRTCSharingStatus)
-{
-    /// Begin to share by the user himself.
-    MobileRTCSharingStatus_Self_Send_Begin,
-    /// Stop sharing by the user.
-    MobileRTCSharingStatus_Self_Send_End,
-    /// Others begin to share.
-    MobileRTCSharingStatus_Other_Share_Begin,
-    /// Others stop sharing.
-    MobileRTCSharingStatus_Other_Share_End,
-    /// View the sharing of others.
-    MobileRTCSharingStatus_View_Other_Sharing,
-    /// Pause sharing.
-    MobileRTCSharingStatus_Pause,
-    /// Resume sharing.
-    MobileRTCSharingStatus_Resume,
-};
-
-/*!
  @brief Enumeration of LockShare Status changed.
  */
 typedef NS_ENUM(NSUInteger, MobileRTCShareSettingType)
@@ -936,60 +911,5 @@ typedef NS_ENUM(NSInteger, MobileRTCVBType)
     MobileRTCVBType_Blur,
     /// virtual background type with image
     MobileRTCVBType_Item
-};
-
-/*!
- @brief Video subscribe error.
- */
-typedef NS_ENUM(NSInteger, MobileRTCSubscribeFailReason)
-{
-    MobileRTCSubscribe_Fail_None = 0,
-    MobileRTCSubscribe_Fail_ViewOnly,
-    MobileRTCSubscribe_Fail_NotInMeeting,
-    MobileRTCSubscribe_Fail_NotSupport1080P,
-    MobileRTCSubscribe_Fail_HasSubscribe720P,
-    MobileRTCSubscribe_Fail_HasSubscribeExceededLimit,
-};
-
-/*!
- @brief MobileRTCANNError An enumeration of App Signaling.
- */
-typedef NS_ENUM(NSUInteger, MobileRTCANNError) {
-    ///Call ANN API succeed
-    MobileRTCANNError_Success                          = 0,
-    ///You can't call ANN api out of a meeting.
-    MobileRTCANNError_NotInMeeting                     = 1,
-    /// You should not call ANN
-    MobileRTCANNError_NotCustomUI                      = 2,
-    /// ANN feature not support
-    MobileRTCANNError_FeatureNotSupport                = 3,
-};
-
-/*!
- @brief Live transcription status.
- */
-typedef NS_ENUM(NSUInteger, MobileRTCLiveTranscriptionStatus) {
-    /// Live transcription not start.
-    MobileRTC_LiveTranscription_Status_Unknown                  = 0,
-    /// Live transcription not start.
-    MobileRTC_LiveTranscription_Status_Stop                     = 1,
-    /// Live transcription start.
-    MobileRTC_LiveTranscription_Status_Start                    = 2,
-    /// Live transcription connecting.
-    MobileRTC_LiveTranscription_Status_Connecting               = 3,
-};
-
-/*!
- @brief Live transcription operation type.
- */
-typedef NS_ENUM(NSUInteger, MobileRTCLiveTranscriptionOperationType) {
-    /// Live transcription operation type is none, means no operate.
-    MobileRTC_LiveTranscription_OperationType_None              = 0,
-    /// Live transcription operation type is add, means a new live transcription item is arrive.
-    MobileRTC_LiveTranscription_OperationType_Add               = 1,
-    /// Live transcription operation type is update, means an existed live transcription item has been updated.
-    MobileRTC_LiveTranscription_OperationType_Update            = 2,
-    /// Live transcription operation type is delete, means an existed live transcription item has been deleted.
-    MobileRTC_LiveTranscription_OperationType_Delete            = 3,
 };
 
