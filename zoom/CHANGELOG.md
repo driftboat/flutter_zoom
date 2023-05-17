@@ -1,3 +1,6 @@
+## 1.0.4
+* Merge pull request #29 from vurilo/change_zoom_ios_path
+
 ## 1.0.3+5
 * add meetingViewOptions to ZoomMeetingOptions(Android&iOS)
 
