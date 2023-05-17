@@ -1,22 +1,22 @@
 name: zoom
 description: A Flutter plugin for the Zoom Client SDK.
 version: 1.0.3+5
-repository: https://github.com/driftboat/flutter_zoom/tree/main/zoom
+repository: https://github.com/vurilo/flutter_zoom/tree/main/zoom
 
 environment:
-  sdk: ">=2.12.0 <3.0.0"
+  sdk: ">=2.12.0 <3.0.5"
   flutter: ">=1.20.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  zoom_platform_interface: ^1.0.3+3 
-  zoom_web: ^1.0.2+1
+  plugin_platform_interface: ^2.1.2
 
 dev_dependencies:
+  flutter_lints: ^1.0.4
   flutter_test:
     sdk: flutter
- 
+
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
@@ -29,12 +29,10 @@ flutter:
   plugin:
     platforms:
       android:
-        package: com.webcare.zoom
+        package: com.vurilo.zoom
         pluginClass: ZoomPlugin
       ios:
         pluginClass: ZoomPlugin
-      web:
-         default_package: zoom_web
 
   # To add assets to your plugin package, add an assets section, like this:
   # assets:
