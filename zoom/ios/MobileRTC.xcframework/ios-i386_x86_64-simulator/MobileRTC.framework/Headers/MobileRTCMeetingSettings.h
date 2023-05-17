@@ -51,6 +51,12 @@
 @property (assign, nonatomic) BOOL meetingInviteHidden;
 
 /*!
+ @brief Show/Hide INVITE link in the meeting info view.
+ @warning The function only for Zoom UI.
+ */
+@property (assign, nonatomic) BOOL meetingInviteUrlHidden;
+
+/*!
  @brief Show/Hide Chat in the meeting bar.
  @warning The function only for Zoom UI.
  */
@@ -223,7 +229,7 @@
 
 /*!
  @brief Query Touch up my appearance enable or not
- @param muted YES means enable, otherwise not.
+ @return muted YES means enable, otherwise not.
  */
 - (BOOL)faceBeautyEnabled;
 
@@ -232,6 +238,19 @@
  @param muted YES means successful, otherwise not.
  */
 - (void)setFaceBeautyEnabled:(BOOL)enable;
+
+/*!
+ @brief Determine if mirror effect is enabled.
+ @return YES means enabled, otherwise not.
+ */
+- (BOOL)isMirrorEffectEnabled;
+
+/*!
+ @brief Set to enable/disable mirror effect.
+ @param enable YES means enabled, No disabled.
+ @return If the function succeeds, it will return ZoomSDKError_Success. Otherwise failed. 
+ */
+- (void)enableMirrorEffect:(BOOL)enable;
 
 /*!
  @brief Query if driving mode is disabled.

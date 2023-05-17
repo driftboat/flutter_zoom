@@ -70,6 +70,31 @@ typedef NS_ENUM(NSUInteger, MobileRTCBOStopCountDown) {
  @brief BO Count Down Second.
  */
 @property (nonatomic, assign) MobileRTCBOStopCountDown countdownSeconds;
+/*!
+ @brief Enable/Disable that participant can choose breakout room.
+ */
+@property (nonatomic, assign) BOOL isParticipantCanChooseBO;
+/*!
+ @brief Enable/Disable that participant can return to main session at any time.
+ */
+@property (nonatomic, assign) BOOL isParticipantCanReturnToMainSessionAtAnyTime;
+/*!
+ @brief Enable/Disable that auto move all assigned participants to breakout room.
+ */
+@property (nonatomic, assign) BOOL isAutoMoveAllAssignedParticipantsEnabled;
+/*!
+ @brief true: it's timer BO false: not timer BO
+ */
+@property (nonatomic, assign) BOOL isBOTimerEnabled;
+/*!
+ @brief true: if time is up, will stop BO auto. false: don't auto stop.
+ */
+@property (nonatomic, assign) BOOL isTimerAutoStopBOEnabled;
+/*!
+ @brief seconds of BO timer duration
+ @warning when timerDuration is 0, it means that the BO duration is 30*60 seconds.
+ */
+@property (nonatomic, assign) NSInteger timerDuration;
 
 @end
 
@@ -98,6 +123,13 @@ typedef NS_ENUM(NSUInteger, MobileRTCBOStopCountDown) {
 @return bo meeting id.
 */
 - (NSString * _Nullable)createBO:(NSString * _Nonnull)boName;
+
+/*!
+@brief create bo meetings in batches.
+@param boNameList the BO name list.
+@return batch bo create success or not
+*/
+- (BOOL)createGroupBO:(NSArray<NSString*> * _Nonnull)boNameList;
 
 /*!
 @brief update bo meeting name with bo id.
@@ -282,6 +314,12 @@ typedef NS_ENUM(NSUInteger, MobileRTCBOStopCountDown) {
 @return the result of call the method.
 */
 - (BOOL)isHostInThisBO;
+
+/*!
+ @brief Determine if participant can return to main session.
+ @return true if can, otherwise false.
+*/
+- (BOOL)isCanReturnMainSession;
 
 @end
 

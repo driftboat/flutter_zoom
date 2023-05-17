@@ -200,6 +200,14 @@
 - (UIView * _Nullable)meetingView;
 
 /*!
+ @brief Set the customized invitation domain.
+ @param invitationDomain: Specify the customized invitation domain. eg: https://abc.com.
+ @return YES means success, otherwise not.
+ @warning This method can only be called after auth ready and before the join/start meeting.
+ */
+- (BOOL)setCustomizedInvitationDomain:(NSString *_Nonnull)invitationDomain;
+
+/*!
  @brief Get annotation over share legal notices prompt.
  @return annotation over share legal notices prompt.
  */

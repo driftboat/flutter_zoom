@@ -10,8 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  zoom_platform_interface: ^1.0.3+3 
-  zoom_web: ^1.0.2+1
+  zoom_platform_interface: ^1.0.3+3
 
 dev_dependencies:
   flutter_test:
@@ -33,8 +32,6 @@ flutter:
         pluginClass: ZoomPlugin
       ios:
         pluginClass: ZoomPlugin
-      web:
-         default_package: zoom_web
 
   # To add assets to your plugin package, add an assets section, like this:
   # assets:

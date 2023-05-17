@@ -64,15 +64,6 @@
 - (MobileRTCUserType)getUserType;
 
 /*!
- @brief Specify to login MobileRTC with working email.
- @param email Login email address.
- @param password Login password.
- @return YES indicates to call the method successfully. Otherwise not.
- @warning The method is optional, ignore it if you do not have a working email for MobileRTC.
- */
-- (BOOL)loginWithEmail:(nonnull NSString*)email password:(nonnull NSString*)password rememberMe:(BOOL)rememberMe;
-
-/*!
 * @brief generate the sso login url for specific sso vanity url
 * @param vanityUrl The prefix of vanity url.
 * @return If the function succeeds,will return url of can launch app.
@@ -85,13 +76,6 @@
  * @return If the function succeeds, it will return ZoomSDKError_success. Otherwise failed.
  */
 - (MobileRTCLoginFailReason)ssoLoginWithWebUriProtocol:(nonnull NSString*)uriProtocol;
-
-/*!
- @brief Query if it is enabled to login with email.
- @return YES means enable, otherwise not.
- @warning You need call the function after auth successfull.
- */
-- (BOOL)isEmailLoginEnabled;
 
 /*!
  @brief Specify to logout MobileRTC.

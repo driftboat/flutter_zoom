@@ -14,7 +14,6 @@
 #import "MobileRTCPreProcessRawData.h"
 #import "MobileRTCVideoSender.h"
 #import "MobileRTCVideoCapabilityItem.h"
-#import "MobileRTCPromoteHandler.h"
 
 @class MobileRTCInterpretationLanguage;
 #pragma mark - MobileRTCMeetingServiceDelegate
@@ -276,7 +275,7 @@
 @param userId subscribe userId.
 @warning the call back only for Custom UI Mode.
 */
-- (void)onSubscribeUserFail:(NSInteger)errorCode size:(NSInteger)size userId:(NSUInteger)userId;
+- (void)onSubscribeUserFail:(MobileRTCSubscribeFailReason)errorCode size:(NSInteger)size userId:(NSUInteger)userId;
 
 @end
 
@@ -394,6 +393,19 @@
  @warning The call back only for ZoomUI, Custom UI will not be executed.
  */
 - (void)onSinkMeetingShowMinimizeMeetingOrBackZoomUI:(MobileRTCMinimizeMeetingState)state;
+
+/*!
+ @brief Callback event of the video order changes.
+ @param orderArr The video order array contains the user ID of listed users.
+ */
+- (void)onVideoOrderUpdated:(NSArray <NSNumber *>* _Nullable)orderArr;
+
+/*!
+ @brief Notification the status of following host's video order changed.
+ @param follow Yes means the option of following host's video order is on, otherwise not.
+ */
+- (void)onFollowHostVideoOrderChanged:(BOOL)follow;
+
 @end
 
 
@@ -479,14 +491,23 @@
  @brief Callback event when the share starts.
  @param userID The user ID of presenter.
  @warning userID == 0, which means that the user stopped sharing.
+ @deprecated replace with {@link onSinkSharingStatus:userID:}
  */
-- (void)onSinkMeetingActiveShare:(NSUInteger)userID;
+- (void)onSinkMeetingActiveShare:(NSUInteger)userID DEPRECATED_ATTRIBUTE;
 
 /*!
- @brief Callback event when the sharing content changes.  
+ @brief Callback event when the sharing content changes.
  @param userID The user ID of presenter.
+ @deprecated replace with {@link onSinkSharingStatus:userID:}
  */
-- (void)onSinkMeetingShareReceiving:(NSUInteger)userID;
+- (void)onSinkMeetingShareReceiving:(NSUInteger)userID DEPRECATED_ATTRIBUTE;
+
+/*!
+ @brief Callback event when the share status changed.
+ @param status Sharing status.
+ @param userID Specify the user ID whose share status changes.
+*/
+- (void)onSinkSharingStatus:(MobileRTCSharingStatus)status userID:(NSUInteger)userID;
 
 /*!
  @brief Callback event when the sharing settings changes.
@@ -688,8 +709,8 @@
 
 /*!
  @brief Callback event that user joins a webinar which requires username and email.
- @param cancel Cancel to join meeting if user does not provide screen name or meeting password.
- @param completion User needs to provide username and email to join meeting. 
+ @param completion User needs to provide username and email to join meeting or cancel the join action.
+ @warning In ZoomUI mode, user can implement this method to avoid Zoom's UI shown. Not implement this method, will shown the Zoom's UI.
  */
 - (void)onSinkJoinWebinarNeedUserNameAndEmailWithCompletion:(BOOL (^_Nonnull)(NSString * _Nonnull username, NSString * _Nonnull email, BOOL cancel))completion;
 
@@ -735,6 +756,34 @@
 @brief The function will be invoked when attendde disallow to talk.
 */
 - (void)onSinkSelfDisallowTalkNotification;
+@end
+
+/*!
+@brief The function will be invoked when attendde disallow to talk.
+*/
+@protocol MobileRTCLiveTranscriptionServiceDelegate <MobileRTCMeetingServiceDelegate>
+
+@optional
+/*!
+@brief Sink the event of live transcription status.
+@param status the live transcription status. For more details, see MobileRTCLiveTranscriptionStatus
+*/
+- (void)onSinkLiveTranscriptionStatus:(MobileRTCLiveTranscriptionStatus)status;
+
+/*!
+@brief Sink the event of receive the live transcription msg.
+@param msg the received live transcription msg.
+@param type the live transcription operation type, For more details, see MobileRTCLiveTranscriptionOperationType.
+*/
+- (void)onSinkLiveTranscriptionMsgReceived:(NSString *_Nonnull)msg type:(MobileRTCLiveTranscriptionOperationType)type;
+
+/*!
+@brief Sink the event of request for start the live transcription. Only The HOST can retrieve this callback. You can aprrove request call start live transcription, or decline as do nothing.
+@param requesterUserId the userid of the request from. If bAnonymous is TRUE, requesterUserId has no meanings.
+@param bAnonymous TRUE means the request is anonymous.
+*/
+- (void)onSinkRequestForLiveTranscriptReceived:(NSUInteger)requesterUserId bAnonymous:(BOOL)bAnonymous;
+
 @end
 
 #pragma mark - MobileRTCCustomizedUIMeetingDelegate
@@ -1043,6 +1092,13 @@
 @param errType the error type defail of the failure.
 */
 - (void)onStartBOError:(MobileRTCBOControllerError)errType;
+
+/*!
+ @brief if it's timer BO, after start BO, you will receive the event.
+ @param remaining remaining time,
+ @param isTimesUpNotice true: when time is up, auto stop BO. false: don't auto stop BO.
+ */
+- (void)onBOEndTimerUpdated:(NSUInteger)remaining isTimesUpNotice:(BOOL)isTimesUpNotice;
 
 @end
 
