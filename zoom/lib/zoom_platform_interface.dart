@@ -5,10 +5,10 @@
 
 import 'dart:async';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
-import 'package:gr_zoom/gr_zoom_options.dart';
+import 'package:zoom/zoom_options.dart';
 
-import 'gr_zoom_method_channel.dart';
-export 'gr_zoom_options.dart';
+import 'zoom_method_channel.dart';
+export 'zoom_options.dart';
 
 abstract class ZoomPlatform extends PlatformInterface {
   ZoomPlatform() : super(token: _token);

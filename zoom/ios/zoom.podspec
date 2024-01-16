@@ -3,7 +3,7 @@
 # Run `pod lib lint zoom.podspec` to validate before publishing.
 #
 Pod::Spec.new do |s|
-  s.name             = 'gr_zoom'
+  s.name             = 'zoom'
   s.version          = '0.0.2'
   s.summary          = 'A new flutter plugin project.'
   s.description      = <<-DESC

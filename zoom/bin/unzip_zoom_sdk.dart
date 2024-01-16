@@ -20,13 +20,13 @@ void main(List<String> args) async {
     var packageList = packages["packages"];
     String? zoomFileUri;
     for (var package in packageList) {
-      if (package["name"] == "gr_zoom") {
+      if (package["name"] == "zoom") {
         zoomFileUri = package["rootUri"];
         break;
       }
     }
     if (zoomFileUri == null) {
-      print("gr_zoom package not found!");
+      print("zoom package not found!");
       return;
     }
     location = zoomFileUri;

@@ -8,23 +8,23 @@ Android: zoom-sdk-android-5.10.1.5184
 iOS: zoom-sdk-ios-5.9.0.2170
 
 ## Installation from pub.dev
-https://pub.dev/packages/gr_zoom
+https://pub.dev/packages/zoom
 
 After install the library, must run the follow script to get some sdk stuff for the first time:
 ```shell script
-flutter pub run gr_zoom:unzip_zoom_sdk
+flutter pub run zoom:unzip_zoom_sdk
 ```
 ## Installation from github
 
 ```yaml
-  gr_zoom:
+  zoom:
     git:
-      url: git@github.com:25LucasAnselmo/gr_zoom.git
+      url: git@github.com:25LucasAnselmo/zoom.git
       ref: main
 ```
 After install the library, must run the follow script to get some sdk stuff for the first time:
 ```shell script
-flutter pub run gr_zoom:unzip_zoom_sdk
+flutter pub run zoom:unzip_zoom_sdk
 ```
 
 ### iOS
@@ -50,7 +50,7 @@ Diable BITCODE in the `ios/Podfile`:
 post_install do |installer|
   installer.pods_project.targets.each do |target|
     flutter_additional_ios_build_settings(target)
-    if target.name == "gr_zoom"
+    if target.name == "zoom"
       puts("Found target membership zoom.")
       all_filerefs = installer.pods_project.files
       all_filerefs.each do |fileref|
@@ -81,13 +81,13 @@ If you want to use the iOS Simulator to test your app, you will need to ensure y
 
 To use the Dev Zoom SDK, run the following
 ```shell script
-flutter pub run gr_zoom:unzip_zoom_sdk dev
+flutter pub run zoom:unzip_zoom_sdk dev
 ```
     
 To switch back to the normal Zoom SDK, simply run
 
 ```shell script
-flutter pub run gr_zoom:unzip_zoom_sdk
+flutter pub run zoom:unzip_zoom_sdk
 ```
 
 ### Android
@@ -155,4 +155,4 @@ Disable shrinkResources for release buid
 
 
 # reference
-https://github.com/25LucasAnselmo/gr_zoom
+https://github.com/25LucasAnselmo/zoom

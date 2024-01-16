@@ -1,6 +1,6 @@
-# gr_zoom_example
+# zoom_example
 
-Demonstrates how to use the gr_zoom plugin.
+Demonstrates how to use the zoom plugin.
 
 ## Getting Started
 

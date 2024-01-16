@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 
 import 'package:flutter/services.dart';
-import 'package:gr_zoom/gr_zoom.dart';
+import 'package:zoom/zoom.dart';
 
 void main() {
   runApp(const MyApp());

@@ -17,7 +17,7 @@ rootProject.allprojects {
         google()
         jcenter()
         flatDir {
-            dirs project(':gr_zoom').file('libs')
+            dirs project(':zoom').file('libs')
         }
     }
 }

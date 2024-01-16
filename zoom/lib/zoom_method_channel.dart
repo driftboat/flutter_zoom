@@ -1,6 +1,6 @@
 import 'package:flutter/services.dart';
-import 'package:gr_zoom/gr_zoom_options.dart';
-import 'package:gr_zoom/gr_zoom_platform_interface.dart';
+import 'package:zoom/zoom_options.dart';
+import 'package:zoom/zoom_platform_interface.dart';
 
 class MethodChannelZoom extends ZoomPlatform {
   final MethodChannel channel = MethodChannel('plugins.webcare/zoom_channel');
