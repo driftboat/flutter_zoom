@@ -28,6 +28,7 @@ import us.zoom.sdk.ZoomSDKAuthenticationListener;
 import us.zoom.sdk.ZoomSDKInitParams;
 import us.zoom.sdk.ZoomSDKInitializeListener;
 import io.flutter.embedding.engine.plugins.activity.ActivityAware;
+
 /** ZoomPlugin */
 public class ZoomPlugin implements FlutterPlugin, MethodCallHandler,ActivityAware, ZoomSDKAuthenticationListener {
     /// The MethodChannel that will the communication between Flutter and native Android
@@ -181,7 +182,7 @@ public class ZoomPlugin implements FlutterPlugin, MethodCallHandler,ActivityAwar
         
         StartMeetingParamsWithoutLogin params = new StartMeetingParamsWithoutLogin();
 
-        params.userId = options.get("userId");
+        // params.userId = options.get("userId");
         params.displayName = options.get("displayName");
         params.meetingNo = options.get("meetingId");
         params.userType = MeetingService.USER_TYPE_API_USER;
@@ -260,6 +261,11 @@ public class ZoomPlugin implements FlutterPlugin, MethodCallHandler,ActivityAwar
 
     @Override
     public void onDetachedFromActivity() {
+
+    }
+
+    @Override
+    public void onNotificationServiceStatus(SDKNotificationServiceStatus status) {
 
     }
 }

@@ -3,29 +3,28 @@ A Flutter plugin for the Zoom Client SDK.
 
 ## Zoom SDK Versions
 
-Android: zoom-sdk-android-5.7.1.1268
+Android: zoom-sdk-android-5.10.1.5184
  
-iOS: zoom-sdk-ios-5.7.1.645
+iOS: zoom-sdk-ios-5.9.0.2170
 
 ## Installation from pub.dev
-https://pub.dev/packages/zoom
+https://pub.dev/packages/gr_zoom
 
 After install the library, must run the follow script to get some sdk stuff for the first time:
 ```shell script
-flutter pub run zoom:unzip_zoom_sdk
+flutter pub run gr_zoom:unzip_zoom_sdk
 ```
 ## Installation from github
 
 ```yaml
-  zoom:
+  gr_zoom:
     git:
-      url: git@github.com:driftboat/flutter_zoom.git
+      url: git@github.com:25LucasAnselmo/gr_zoom.git
       ref: main
-      path: zoom
 ```
 After install the library, must run the follow script to get some sdk stuff for the first time:
 ```shell script
-flutter pub run zoom:unzip_zoom_sdk
+flutter pub run gr_zoom:unzip_zoom_sdk
 ```
 
 ### iOS
@@ -51,6 +50,24 @@ Diable BITCODE in the `ios/Podfile`:
 post_install do |installer|
   installer.pods_project.targets.each do |target|
     flutter_additional_ios_build_settings(target)
+    if target.name == "gr_zoom"
+      puts("Found target membership zoom.")
+      all_filerefs = installer.pods_project.files
+      all_filerefs.each do |fileref|
+        if fileref.path.end_with? "MobileRTC.xcframework"
+          puts("Found MobileRTC.xcframework fileref.")
+          build_phase = target.frameworks_build_phase
+          puts("Determining if zoom build phase needs correction.")
+          unless build_phase.files_references.include?(fileref)
+            puts("Adding MobileRTC.xcframework to zoom target")
+            build_phase.add_file_reference(fileref)
+          end
+        end
+      end
+      installer.pods_project.build_configurations.each do |config|
+        config.build_settings["EXCLUDED_ARCHS[sdk=iphonesimulator*]"] = "arm64"
+      end
+    end
     target.build_configurations.each do |config|
       config.build_settings['ENABLE_BITCODE'] = 'NO'
     end
@@ -64,13 +81,13 @@ If you want to use the iOS Simulator to test your app, you will need to ensure y
 
 To use the Dev Zoom SDK, run the following
 ```shell script
-flutter pub run zoom:unzip_zoom_sdk dev
+flutter pub run gr_zoom:unzip_zoom_sdk dev
 ```
     
 To switch back to the normal Zoom SDK, simply run
 
 ```shell script
-flutter pub run zoom:unzip_zoom_sdk
+flutter pub run gr_zoom:unzip_zoom_sdk
 ```
 
 ### Android
@@ -92,36 +109,6 @@ Disable shrinkResources for release buid
             minifyEnabled false
         }
     }
-```
-
-### Web
-
-Add stylesheet to the head of index.html
-```html
-<link type="text/css" rel="stylesheet" href="https://source.zoom.us/1.9.9/css/bootstrap.css" />
-<link type="text/css" rel="stylesheet" href="https://source.zoom.us/1.9.9/css/react-select.css" />
-```
-Import ZoomMtg dependencies to the body of index.html
-```html
-<!-- import ZoomMtg dependencies -->
-   <script src="https://source.zoom.us/1.9.9/lib/vendor/react.min.js"></script>
-   <script src="https://source.zoom.us/1.9.9/lib/vendor/react-dom.min.js"></script>
-   <script src="https://source.zoom.us/1.9.9/lib/vendor/redux.min.js"></script>
-   <script src="https://source.zoom.us/1.9.9/lib/vendor/redux-thunk.min.js"></script>
-   <script src="https://source.zoom.us/1.9.9/lib/vendor/lodash.min.js"></script>
-   <script src="https://source.zoom.us/1.9.9/lib/av/1502_js_media.min.js"></script>
-
-   <!-- import ZoomMtg -->
-   <script src="https://source.zoom.us/zoom-meeting-1.9.9.min.js"></script>
-
-   <script src="main.dart.js" type="application/javascript"></script>
-```
-Append "zmmtg-root" after zoom inited 
-```dart
-if (kIsWeb) {
-    var zr = window.document.getElementById("zmmtg-root");
-    querySelector('body').append(zr);
-}
 ```
 
 ## example
@@ -168,4 +155,4 @@ if (kIsWeb) {
 
 
 # reference
-https://github.com/decodedhealth/flutter_zoom_plugin
+https://github.com/25LucasAnselmo/gr_zoom
